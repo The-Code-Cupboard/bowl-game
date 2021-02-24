@@ -1,10 +1,20 @@
 <script>
+    const wordArray = [];
+    const userArray = [];
+
     function getData() {
-        console.log("Hello");
-        console.log(document.getElementById("user_id").value);
-        console.log(document.getElementById("noun1").value);
-        console.log(document.getElementById("noun2").value);
-        console.log(document.getElementById("noun3").value);
+        let user = document.getElementById("user_id").value;
+        let item1 = document.getElementById("noun1").value;
+        let item2 = document.getElementById("noun2").value;
+        let item3 = document.getElementById("noun3").value;
+        userArray.push(user);
+        wordArray.push(item1);
+        wordArray.push(item2);
+        wordArray.push(item3);
+        console.log(wordArray);
+        console.log(userArray);
+        localStorage.setItem('wordList', JSON.stringify(wordArray));
+        localStorage.setItem('userList', JSON.stringify(userArray));
     }
 </script>
 
@@ -23,16 +33,16 @@
     <main>
         <h2>Game Prep</h2>
         <h3>Create a Username:</h3>
-        <input type="text" id="user_id" value="Create Username">
+        <input type="text" id="user_id" onfocus="this.value=''" value="Create Username">
         
         <h3>Enter a few nouns:</h3>
         <ul>
-            <li><input type="text" id="noun1" value="Name, Place or Thing"></li>
-            <li><input type="text" id="noun2" value="Name, Place or Thing"></li>
-            <li><input type="text" id="noun3" value="Name, Place or Thing"></li>
+            <li><input type="text" id="noun1" onfocus="this.value=''" value="Person, Place or Thing"></li>
+            <li><input type="text" id="noun2" onfocus="this.value=''" value="Person, Place or Thing"></li>
+            <li><input type="text" id="noun3" onfocus="this.value=''" value="Person, Place or Thing"></li>
         </ul>
         <button type="button"><a href="#" onclick="getData()">Create Another User</a></button>
-        <button type="button"><a href="#">Done, Start Game</a></button>
+        <button type="button"><a href="gamePage.html" onclick="getData()">Done, Start Game</a></button>
     </main>
 </body>
 </html>
