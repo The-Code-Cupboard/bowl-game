@@ -1,0 +1,38 @@
+<script>
+    function getData() {
+        console.log("Hello");
+        console.log(document.getElementById("user_id").value);
+        console.log(document.getElementById("noun1").value);
+        console.log(document.getElementById("noun2").value);
+        console.log(document.getElementById("noun3").value);
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bowl Game</title>
+</head>
+<body>
+    <header>
+        <h1>The Bowl Game</h1>
+    </header>
+    <main>
+        <h2>Game Prep</h2>
+        <h3>Create a Username:</h3>
+        <input type="text" id="user_id" value="Create Username">
+        
+        <h3>Enter a few nouns:</h3>
+        <ul>
+            <li><input type="text" id="noun1" value="Name, Place or Thing"></li>
+            <li><input type="text" id="noun2" value="Name, Place or Thing"></li>
+            <li><input type="text" id="noun3" value="Name, Place or Thing"></li>
+        </ul>
+        <button type="button"><a href="#" onclick="getData()">Create Another User</a></button>
+        <button type="button"><a href="#">Done, Start Game</a></button>
+    </main>
+</body>
+</html>
