@@ -1,0 +1,33 @@
+<script>
+    //get stored data and write into HTML
+    window.onload = function() {
+        const userArray = JSON.parse(localStorage.getItem("userList"));
+        const wordArray = JSON.parse(localStorage.getItem("wordList"));
+        console.log(userArray);
+        console.log(wordArray);  
+        document.getElementById("userDisplay").innerHTML = Object.keys(userArray).length;
+        document.getElementById("itemDisplay").innerHTML = Object.keys(wordArray).length;
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bowl Game</title>
+</head>
+
+<body>
+    <header>
+        <h1>The Bowl Game</h1>
+    </header>
+    <main>
+        <h2>Team Summary</h2>
+        <p>User Count: <span id="userDisplay"></span></p>
+        <p>Words Submitted: <span id="itemDisplay"></span></p>
+        <button type="button"><a href="gamePage.html">Start Game</a></button>
+    </main>
+</body>
+</html>
