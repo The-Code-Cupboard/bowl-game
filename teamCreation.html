@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    //creates variables for team1 and team2, checks for duplication of names.
+    function createTeams() {
+        let team1 = document.getElementById("team1").value;
+        let team2 = document.getElementById("team2").value;
+        console.log("Team 1 name: " + team1);
+        console.log("Team 2 name: " + team2);
+        if (team1 == team2) {
+            console.log("Team names must be unique. Try again.");
+            event.preventDefault();
+        }
+        else {
+            localStorage.setItem("team1", team1);
+            localStorage.setItem("team2", team2);
+        }
+    }
+</script>
+<body>
+    <header>
+        <h1>The Bowl Game</h1>
+    </header>
+    <main>
+        <h2>Team Creation</h2>
+        <p>The game will consist of two teams. Choose your team names:</p>
+        <div><input type="text" id=team1 value="Team 1:" onfocus="this.value=''"></div>
+        <div><input type="text" id=team2 value="Team 2:" onfocus="this.value=''"></div>
+        <button type="button"><a href="gamePrep.html" onclick="createTeams()">Next: Game Prep</a></button>
+    </main>
+</body>
+</html>

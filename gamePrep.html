@@ -1,7 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bowl Game</title>
+</head>
+
 <script>
+    // changes Team 1 and Team 2 to user defined team names
+    window.onload = function() {
+        var team1Label = document.getElementById("team1RadioLabel");
+        var team1Name = localStorage.getItem("team1");
+        team1Label.innerHTML = team1Name;
+        var team2Label = document.getElementById("team2RadioLabel");
+        var team2Name = localStorage.getItem("team2");
+        team2Label.innerHTML = team2Name;    
+    }
     const wordArray = [];
     const userArray = [];
-
     function getData() {
         let user = document.getElementById("user_id").value;
         let item1 = document.getElementById("noun1").value;
@@ -18,14 +35,6 @@
     }
 </script>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Bowl Game</title>
-</head>
 <body>
     <header>
         <h1>The Bowl Game</h1>
@@ -34,6 +43,10 @@
         <h2>Game Prep</h2>
         <h3>Create a Username:</h3>
         <input type="text" id="user_id" onfocus="this.value=''" value="Create Username">
+        <input type="radio" id="team1Radio" name="teamSelect" value="Team #1">
+        <label for="team1Radio" id="team1RadioLabel">Team #1</label> 
+        <input type="radio" id="team2Radio" name="teamSelect" value="Team #2">
+        <label for="team2Radio" id="team2RadioLabel">Team #2</label> 
         
         <h3>Enter a few nouns:</h3>
         <ul>
