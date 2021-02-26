@@ -11,27 +11,39 @@
     // changes Team 1 and Team 2 to user defined team names
     window.onload = function() {
         var team1Label = document.getElementById("team1RadioLabel");
-        var team1Name = localStorage.getItem("team1");
-        team1Label.innerHTML = team1Name;
+        var team1 = JSON.parse(localStorage.getItem("team1"));
+        team1Label.innerHTML = team1.name;
         var team2Label = document.getElementById("team2RadioLabel");
-        var team2Name = localStorage.getItem("team2");
-        team2Label.innerHTML = team2Name;    
+        var team2 = JSON.parse(localStorage.getItem("team2"));
+        team2Label.innerHTML = team2.name;    
     }
     const wordArray = [];
     const userArray = [];
-    function getData() {
+    function createUser() {
+        let team1 = JSON.parse(localStorage.getItem("team1"));
+        let team2 = JSON.parse(localStorage.getItem("team2"));
         let user = document.getElementById("user_id").value;
         let item1 = document.getElementById("noun1").value;
         let item2 = document.getElementById("noun2").value;
         let item3 = document.getElementById("noun3").value;
-        userArray.push(user);
-        wordArray.push(item1);
-        wordArray.push(item2);
-        wordArray.push(item3);
-        console.log(wordArray);
-        console.log(userArray);
-        localStorage.setItem('wordList', JSON.stringify(wordArray));
-        localStorage.setItem('userList', JSON.stringify(userArray));
+        let newUser = {username:user, wordsList:[item1, item2, item3]};
+        localStorage.setItem(newUser.username, JSON.stringify(newUser)); //sessionStorage? no need to store at all?
+        if (document.getElementById("team1Radio").checked == true) {
+            team1.members.push(newUser);
+            localStorage.setItem("team1", JSON.stringify(team1));
+            
+        }
+        else {
+            team2.members.push(newUser);
+            localStorage.setItem("team2", JSON.stringify(team2));
+        }
+
+
+        //clear text fields
+        document.getElementById("user_id").value = "";
+        document.getElementById("noun1").value = "";
+        document.getElementById("noun2").value = "";
+        document.getElementById("noun3").value = "";
     }
 </script>
 
@@ -44,9 +56,9 @@
         <h2>Game Prep</h2>
         <h3>Create a Username:</h3>
         <input type="text" id="user_id" onfocus="this.value=''" value="Create Username">
-        <input type="radio" id="team1Radio" name="teamSelect" value="Team #1">
+        <input type="radio" id="team1Radio" name="teamSelect" value="team1">
         <label for="team1Radio" id="team1RadioLabel">Team #1</label> 
-        <input type="radio" id="team2Radio" name="teamSelect" value="Team #2">
+        <input type="radio" id="team2Radio" name="teamSelect" value="team2">
         <label for="team2Radio" id="team2RadioLabel">Team #2</label> 
         
         <h3>Enter a few nouns:</h3>
@@ -55,8 +67,8 @@
             <li><input type="text" id="noun2" onfocus="this.value=''" value="Person, Place or Thing"></li>
             <li><input type="text" id="noun3" onfocus="this.value=''" value="Person, Place or Thing"></li>
         </ul>
-        <button type="button"><a href="#" onclick="getData()">Create Another User</a></button>
-        <button type="button"><a href="teamSummary.html" onclick="getData()">Done</a></button>
+        <button type="button"><a href="#" onclick="createUser()">Create Another User</a></button>
+        <button type="button"><a href="teamSummary.html" onclick="createUser()">Done</a></button>
     </main>
 </body>
 </html>

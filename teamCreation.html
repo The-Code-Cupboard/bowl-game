@@ -9,18 +9,19 @@
 </head>
 <script>
     //creates variables for team1 and team2, checks for duplication of names.
+    window.onload = function() {
+        localStorage.clear();
+    }
     function createTeams() {
-        let team1 = document.getElementById("team1").value;
-        let team2 = document.getElementById("team2").value;
-        console.log("Team 1 name: " + team1);
-        console.log("Team 2 name: " + team2);
-        if (team1 == team2) {
+        let team1 = {name:document.getElementById("team1").value, members:[]};
+        let team2 = {name:document.getElementById("team2").value, members:[]};
+        if (team1.name == team2.name) {
             window.alert("Team names must be unique. Try again.");
             event.preventDefault();
         }
         else {
-            localStorage.setItem("team1", team1);
-            localStorage.setItem("team2", team2);
+            localStorage.setItem("team1", JSON.stringify(team1));
+            localStorage.setItem("team2", JSON.stringify(team2));
         }
     }
 </script>
@@ -31,8 +32,8 @@
     <main>
         <h2>Team Creation</h2>
         <p>The game will consist of two teams. Choose your team names:</p>
-        <div><input type="text" id=team1 value="Team 1:" onfocus="this.value=''"></div>
-        <div><input type="text" id=team2 value="Team 2:" onfocus="this.value=''"></div>
+        <div><input type="text" id="team1" value="Team 1:" onfocus="this.value=''"></div>
+        <div><input type="text" id="team2" value="Team 2:" onfocus="this.value=''"></div>
         <button type="button"><a href="gamePrep.html" onclick="createTeams()">Next: Game Prep</a></button>
     </main>
 </body>
