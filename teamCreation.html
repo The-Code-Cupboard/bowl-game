@@ -8,20 +8,25 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 <script>
-    //creates variables for team1 and team2, checks for duplication of names.
     window.onload = function() {
         localStorage.clear();
+        // create empty list for teams and put in local storage
+        let teams = [];
+        localStorage.setItem('teams', JSON.stringify(teams));
     }
     function createTeams() {
+        let teams =  JSON.parse(localStorage.getItem("teams"));
         let team1 = {name:document.getElementById("team1").value, members:[]};
         let team2 = {name:document.getElementById("team2").value, members:[]};
+        // check for duplicate names
         if (team1.name == team2.name) {
             window.alert("Team names must be unique. Try again.");
             event.preventDefault();
         }
         else {
-            localStorage.setItem("team1", JSON.stringify(team1));
-            localStorage.setItem("team2", JSON.stringify(team2));
+            teams.push(team1)
+            teams.push(team2)
+            localStorage.setItem("teams", JSON.stringify(teams));
         }
     }
 </script>
