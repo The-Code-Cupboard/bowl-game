@@ -21,31 +21,40 @@
 
     function addUserToTeam(newUser) {
         // add new user to team depending on which button is selected
-        if (document.getElementById("team1Radio").checked == true) {
+        if (document.getElementById("team1Radio").checked) {
             teams[0].members.push(newUser);
-            //localStorage.setItem("team1", JSON.stringify(team1));
         }
-        else if (document.getElementById("team2Radio").checked == true) {
+        else if (document.getElementById("team2Radio").checked) {
             teams[1].members.push(newUser);
-            //localStorage.setItem("team2", JSON.stringify(team2));
         }
-        localStorage.setItem("team2", JSON.stringify(teams));
     }
 
     function createUser() {
         // create user based on form input and add their words to the user object
         let user = document.getElementById("user_id").value;
-        let item1 = document.getElementById("noun1").value;
-        let item2 = document.getElementById("noun2").value;
-        let item3 = document.getElementById("noun3").value;
-        let newUser = {username:user, wordsList:[item1, item2, item3]};
+        let wordsList = [];
+        //loops through nouns entered by user and adds to wordsList
+        Array.from(document.getElementsByClassName("nouns")).forEach(
+            element => wordsList.push(element.value));
+        let newUser = {username:user, wordsList};
         addUserToTeam(newUser)
 
         // clear text fields
         document.getElementById("user_id").value = "";
-        document.getElementById("noun1").value = "";
-        document.getElementById("noun2").value = "";
-        document.getElementById("noun3").value = "";
+        for (element of document.getElementsByClassName("nouns")) {
+            element.value = "";
+        }
+    }
+
+    function saveTeams() {
+        localStorage.setItem("teams", JSON.stringify(teams));
+    }
+
+    function addTextField(){
+        var ul = document.getElementById("nounList");
+        var li = document.createElement("li");
+        li.innerHTML = '<input type="text" class="nouns" placeholder="Person, Place or Thing" value="">';
+        ul.appendChild(li);
     }
 </script>
 
@@ -57,20 +66,23 @@
     <main>
         <h2>Game Prep</h2>
         <h3>Create a Username:</h3>
-        <input type="text" id="user_id" onfocus="this.value=''" value="Create Username">
-        <input type="radio" id="team1Radio" name="teamSelect" value="team1">
-        <label for="team1Radio" id="team1RadioLabel">Team #1</label> 
-        <input type="radio" id="team2Radio" name="teamSelect" value="team2">
-        <label for="team2Radio" id="team2RadioLabel">Team #2</label> 
-        
-        <h3>Enter a few nouns:</h3>
-        <ul>
-            <li><input type="text" id="noun1" onfocus="this.value=''" value="Person, Place or Thing"></li>
-            <li><input type="text" id="noun2" onfocus="this.value=''" value="Person, Place or Thing"></li>
-            <li><input type="text" id="noun3" onfocus="this.value=''" value="Person, Place or Thing"></li>
-        </ul>
+        <form>
+            <input type="text" id="user_id" placeholder="Username">
+            <input type="radio" id="team1Radio" name="teamSelect" value="team1">
+            <label for="team1Radio" id="team1RadioLabel">Team #1</label>
+            <input type="radio" id="team2Radio" name="teamSelect" value="team2">
+            <label for="team2Radio" id="team2RadioLabel">Team #2</label>
+            
+            <h3>Enter a few nouns:</h3>
+            <ul class="no-bullets" id="nounList">
+                <li><input type="text" class="nouns" placeholder="Person, Place or Thing" value=""></li>
+                <li><input type="text" class="nouns" placeholder="Person, Place or Thing" value=""></li>
+                <li><input type="text" class="nouns" placeholder="Person, Place or Thing" value=""></li>
+            </ul>
+            <button type="button"><a href="#" onclick="addTextField()">One More Noun...</a></button>
+        </form>
         <button type="button"><a href="#" onclick="createUser()">Create Another User</a></button>
-        <button type="button"><a href="teamSummary.html" onclick="createUser()">Done</a></button>
+        <button type="button"><a href="teamSummary.html" onclick="createUser(); saveTeams()">Done</a></button>
     </main>
 </body>
 </html>

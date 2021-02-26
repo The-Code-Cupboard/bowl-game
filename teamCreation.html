@@ -19,7 +19,11 @@
         let team1 = {name:document.getElementById("team1").value, members:[]};
         let team2 = {name:document.getElementById("team2").value, members:[]};
         // check for duplicate names
-        if (team1.name == team2.name) {
+        if (team1.name == '' || team2.name == '') {
+            window.alert("Team names fields must not be empty. Try again.");
+            event.preventDefault();
+        }
+        else if (team1.name == team2.name) {
             window.alert("Team names must be unique. Try again.");
             event.preventDefault();
         }
@@ -37,8 +41,13 @@
     <main>
         <h2>Team Creation</h2>
         <p>The game will consist of two teams. Choose your team names:</p>
-        <div><input type="text" id="team1" value="Team 1:" onfocus="this.value=''"></div>
-        <div><input type="text" id="team2" value="Team 2:" onfocus="this.value=''"></div>
+        <form>
+            <ul class="no-bullets">
+                <li><input type="text" id="team1" placeholder="Team 1:"></li>
+                <li><input type="text" id="team2" placeholder="Team 2:"></li>
+            </ul>
+        </form>
+        
         <button type="button"><a href="gamePrep.html" onclick="createTeams()">Next: Game Prep</a></button>
     </main>
 </body>
