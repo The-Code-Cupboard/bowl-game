@@ -23,13 +23,11 @@
         // add new user to team depending on which button is selected
         if (document.getElementById("team1Radio").checked == true) {
             teams[0].members.push(newUser);
-            //localStorage.setItem("team1", JSON.stringify(team1));
         }
         else if (document.getElementById("team2Radio").checked == true) {
             teams[1].members.push(newUser);
-            //localStorage.setItem("team2", JSON.stringify(team2));
         }
-        localStorage.setItem("team2", JSON.stringify(teams));
+        localStorage.setItem("teams", JSON.stringify(teams));
     }
 
     function createUser() {
