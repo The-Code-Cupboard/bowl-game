@@ -7,27 +7,10 @@
     <title>Document</title>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
-<script>
-    window.onload = function() {
-        localStorage.clear();
-    }
-    function createTeams() {
-        let team1 = {name: document.getElementById("team1").value, members: []};
-        let team2 = {name: document.getElementById("team2").value, members: []};
-        // check for duplicate names
-        if (team1.name === "" || team2.name === "") {
-            window.alert("Team names fields must not be empty. Try again.");
-            event.preventDefault();
-        }
-        else if (team1.name === team2.name) {
-            window.alert("Team names must be unique. Try again.");
-            event.preventDefault();
-        }
-        else {
-            localStorage.setItem("teams", JSON.stringify([team1, team2]));
-        }
-    }
-</script>
+
+<script src="team_user_class.js"></script>
+<script src='teamCreationController.js'></script>
+
 <body>
     <header>
         <h1>The Bowl Game</h1>

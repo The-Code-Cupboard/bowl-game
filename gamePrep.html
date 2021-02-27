@@ -7,59 +7,8 @@
     <title>The Bowl Game</title>
 </head>
 
+<script src="team_user_class.js"></script>
 <script src="gamePrepController.js"></script>
-<script>
-    const USER_ID = "user_id"
-    // load in list of team objects from local storage
-    const teams = JSON.parse(localStorage.getItem("teams"));
-
-    window.onload = () => {
-        // populate team selection buttons with actual team names
-        const team1Label = document.getElementById("team1RadioLabel");
-        team1Label.innerHTML = teams[0].name;
-        const team2Label = document.getElementById("team2RadioLabel");
-        team2Label.innerHTML = teams[1].name;
-    }
-
-    function addUserToTeam(newUser) {
-        // add new user to team depending on which button is selected
-        if (document.getElementById("team1Radio").checked) {
-            teams[0].members.push(newUser);
-        }
-        else if (document.getElementById("team2Radio").checked) {
-            teams[1].members.push(newUser);
-        }
-    }
-
-    function createUser() {
-        // create user based on form input and add their words to the user object
-        let user = document.getElementById(USER_ID).value;
-        let wordsList = [];
-        //loops through nouns entered by user and adds to wordsList
-        Array.from(document.getElementsByClassName("nouns")).forEach(
-            (element) => wordsList.push(element.value));
-        addUserToTeam({username: user, wordsList});
-
-        // clear text fields
-        document.getElementById(USER_ID).value = "";
-        for (element of document.getElementsByClassName("nouns")) {
-            element.value = "";
-        }
-    }
-
-    function addTextField() {
-        const ul = document.getElementById("nounList");
-        const li = document.createElement("li");
-        li.innerHTML = '<input type="text" class="nouns" placeholder="Person, Place or Thing" value="">';
-        ul.appendChild(li);
-    }
-
-    function finalizeGamePrep() {
-        createUser();
-        saveTeams();
-    }
-
-</script>
 
 <body>
     <header>
