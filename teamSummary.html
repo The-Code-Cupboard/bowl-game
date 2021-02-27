@@ -1,13 +1,7 @@
 <script>
-    //get stored data and write into HTML
-    window.onload = function() {
-        const userArray = JSON.parse(localStorage.getItem("userList"));
-        const wordArray = JSON.parse(localStorage.getItem("wordList"));
-        console.log(userArray);
-        console.log(wordArray);  
-        document.getElementById("userDisplay").innerHTML = Object.keys(userArray).length;
-        document.getElementById("itemDisplay").innerHTML = Object.keys(wordArray).length;
-    }
+    // load in list of team objects from local storage
+    var teams = JSON.parse(localStorage.getItem("teams"));
+
 </script>
 
 <!DOCTYPE html>
