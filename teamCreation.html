@@ -10,27 +10,21 @@
 <script>
     window.onload = function() {
         localStorage.clear();
-        // create empty list for teams and put in local storage
-        let teams = [];
-        localStorage.setItem('teams', JSON.stringify(teams));
     }
     function createTeams() {
-        let teams =  JSON.parse(localStorage.getItem("teams"));
-        let team1 = {name:document.getElementById("team1").value, members:[]};
-        let team2 = {name:document.getElementById("team2").value, members:[]};
+        let team1 = {name: document.getElementById("team1").value, members: []};
+        let team2 = {name: document.getElementById("team2").value, members: []};
         // check for duplicate names
-        if (team1.name == '' || team2.name == '') {
+        if (team1.name === "" || team2.name === "") {
             window.alert("Team names fields must not be empty. Try again.");
             event.preventDefault();
         }
-        else if (team1.name == team2.name) {
+        else if (team1.name === team2.name) {
             window.alert("Team names must be unique. Try again.");
             event.preventDefault();
         }
         else {
-            teams.push(team1)
-            teams.push(team2)
-            localStorage.setItem("teams", JSON.stringify(teams));
+            localStorage.setItem("teams", JSON.stringify([team1, team2]));
         }
     }
 </script>

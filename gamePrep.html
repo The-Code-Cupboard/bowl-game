@@ -7,16 +7,18 @@
     <title>The Bowl Game</title>
 </head>
 
+<script src="gamePrepController.js"></script>
 <script>
+    const USER_ID = "user_id"
     // load in list of team objects from local storage
-    var teams = JSON.parse(localStorage.getItem("teams"));
+    const teams = JSON.parse(localStorage.getItem("teams"));
 
-    window.onload = function() {
+    window.onload = () => {
         // populate team selection buttons with actual team names
-        var team1Label = document.getElementById("team1RadioLabel");
+        const team1Label = document.getElementById("team1RadioLabel");
         team1Label.innerHTML = teams[0].name;
-        var team2Label = document.getElementById("team2RadioLabel");
-        team2Label.innerHTML = teams[1].name;    
+        const team2Label = document.getElementById("team2RadioLabel");
+        team2Label.innerHTML = teams[1].name;
     }
 
     function addUserToTeam(newUser) {
@@ -31,31 +33,32 @@
 
     function createUser() {
         // create user based on form input and add their words to the user object
-        let user = document.getElementById("user_id").value;
+        let user = document.getElementById(USER_ID).value;
         let wordsList = [];
         //loops through nouns entered by user and adds to wordsList
         Array.from(document.getElementsByClassName("nouns")).forEach(
-            element => wordsList.push(element.value));
-        let newUser = {username:user, wordsList};
-        addUserToTeam(newUser)
+            (element) => wordsList.push(element.value));
+        addUserToTeam({username: user, wordsList});
 
         // clear text fields
-        document.getElementById("user_id").value = "";
+        document.getElementById(USER_ID).value = "";
         for (element of document.getElementsByClassName("nouns")) {
             element.value = "";
         }
     }
 
-    function saveTeams() {
-        localStorage.setItem("teams", JSON.stringify(teams));
-    }
-
-    function addTextField(){
-        var ul = document.getElementById("nounList");
-        var li = document.createElement("li");
+    function addTextField() {
+        const ul = document.getElementById("nounList");
+        const li = document.createElement("li");
         li.innerHTML = '<input type="text" class="nouns" placeholder="Person, Place or Thing" value="">';
         ul.appendChild(li);
     }
+
+    function finalizeGamePrep() {
+        createUser();
+        saveTeams();
+    }
+
 </script>
 
 <body>
@@ -82,7 +85,7 @@
             <button type="button"><a href="#" onclick="addTextField()">One More Noun...</a></button>
         </form>
         <button type="button"><a href="#" onclick="createUser()">Create Another User</a></button>
-        <button type="button"><a href="teamSummary.html" onclick="createUser(); saveTeams()">Done</a></button>
+        <button type="button"><a href="teamSummary.html" onclick="finalizeGamePrep()">Done</a></button>
     </main>
 </body>
 </html>
