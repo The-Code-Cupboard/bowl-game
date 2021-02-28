@@ -14,6 +14,23 @@ class Team {
     change_team_name(new_name) {
         this.team_name = new_name;
     }
+    calc_num_members() {
+        return this.members.length;
+    }
+    calc_total_team_words() {
+        let n_words = 0;
+        for (let member of this.members) {
+            n_words += member.word_list.length;
+        }
+        return n_words;
+    }
+}
+
+Team.fromData = function(data) {
+    let instance = new Team(data.team_name);
+    instance.members = data.members; // may need to restart User instances
+    instance.score = data.score;
+    return instance;
 }
 
 class User {

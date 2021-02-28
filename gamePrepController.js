@@ -32,20 +32,20 @@ function createUser() {
     Array.from(document.getElementsByClassName("nouns")).forEach(
         (element) => newUser.add_word(element.value));
 
-    let team = identifyTeam();
-    //addUserToTeam({username: user, wordsList});
-    team.add_user_to_team(newUser);
+    let team_index = identifyTeamIndex();
+    teams[team_index] = Team.fromData(teams[team_index])
+    teams[team_index].add_user_to_team(newUser);
 
     clearTextFields()
 }
 
-function identifyTeam() {
+function identifyTeamIndex() {
     // add new user to team depending on which button is selected
     if (document.getElementById("team1Radio").checked) {
-        return teams[0];
+        return 0;
     }
     else if (document.getElementById("team2Radio").checked) {
-        return teams[1];
+        return 1;
     }
 }
 
