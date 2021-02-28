@@ -1,6 +1,7 @@
 window.onload = function() {
     localStorage.clear();
 }
+
 function createTeams() {
 
     team1_name = document.getElementById("team1").value;
