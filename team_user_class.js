@@ -1,9 +1,9 @@
 
 class Team {
-    constructor(team_name) {
+    constructor(team_name, members = [], score = 0) {
         this.team_name = team_name;
-        this.members = [];
-        this.score = 0;
+        this.members = members;
+        this.score = score;
     }
     add_user_to_team(new_team_member) {
         this.members.push(new_team_member);
@@ -27,21 +27,27 @@ class Team {
 }
 
 Team.fromData = function(data) {
-    let instance = new Team(data.team_name);
-    instance.members = data.members; // may need to restart User instances
-    instance.score = data.score;
+    let instance = new Team(data.team_name, data.members, data.score);
+    for (let member_index = 0; member_index < instance.members.length; member_index++) {
+        instance.members[member_index] = User.fromData(instance.members[member_index])
+    }
     return instance;
 }
 
 class User {
-    constructor(user_name) {
+    constructor(user_name, word_list = []) {
         this.user_name = user_name;
-        this.word_list = [];
+        this.word_list = word_list;
     }
     add_word(word) {
         this.word_list.push(word);
     }
-    change_user_name (new_name) {
+    change_user_name(new_name) {
         this.user_name = new_name;
     }
+}
+
+User.fromData = function(data) {
+    let instance = new User(data.user_name, data.word_list);
+    return instance;
 }
