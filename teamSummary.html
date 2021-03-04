@@ -8,11 +8,22 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<script src="team_user_class.js"></script>
-<script src="teamSummaryController.js"></script>
+<script src="teamUserClass.js"></script>
+<!-- <script src="teamSummaryController.js"></script> -->
+<script>
+    // load in list of team objects from local storage
+    const teamsJSON = JSON.parse(localStorage.getItem("teams"));
+    const teams = rebuildTeamsListFromJSON(teamsJSON);
+
+    window.onload = function() {
+    document.getElementById("teamAName").innerHTML = teams[0].getTeamName();
+    document.getElementById("teamAUserDisplay").innerHTML = teams[0].getNumMembers();
+    document.getElementById("teamAWordCount").innerHTML = teams[0].getTotalTeamWords();
+}
+</script>
 
 <body>
-    <header>
+    <header>`
         <h1>The Bowl Game</h1>
     </header>
     <main>

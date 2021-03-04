@@ -7,8 +7,21 @@
     <title>The Bowl Game</title>
 </head>
 
-<script src="team_user_class.js"></script>
+<script src="teamUserClass.js"></script>
 <script src="gamePrepController.js"></script>
+<script>
+    // load in list of team objects from local storage
+    const teamsJSON = JSON.parse(localStorage.getItem("teams"));
+    const teams = rebuildTeamsListFromJSON(teamsJSON);
+
+    window.onload = () => {
+    // populate team selection buttons with actual team names
+    const team1Label = document.getElementById("team1RadioLabel");
+    team1Label.innerHTML = teams[0].getTeamName();
+    const team2Label = document.getElementById("team2RadioLabel");
+    team2Label.innerHTML = teams[1].getTeamName();
+}
+</script>
 
 <body>
     <header>
