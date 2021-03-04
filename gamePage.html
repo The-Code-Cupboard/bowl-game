@@ -8,12 +8,37 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 
+<script>
+    // load in list of team objects from local storage
+    const teamsJSON = JSON.parse(localStorage.getItem("teams"));
+    const teams = rebuildTeamsListFromJSON(teamsJSON);
+
+    //TODO create an array of words from all users
+
+
+    function skipWord() {
+        //this will skip the word, awarding no points, and add the word back to the stack of unguessed words
+    }
+
+    function correctWord() {
+        //award point, removed guessed word from stack.
+    }
+</script>
+
 <body>
     <header>
         <h1>The Bowl Game</h1>
     </header>
     <main>
-
+        <div>
+            <h2><span>TeamAB</span>: <span>User</span>'s Turn</h2>
+            <h3>Word:</h3>
+            <p>Display word here.</p>
+        </div>
+        <div>
+            <button type="button"><a href="#" onclick="skipWord()">Skip Word</a></button>
+            <button type="button"><a href="#" onclick="correctWord()">Correct, Next Word</a></button>
+        </div>
     </main>
 </body>
 </html>
