@@ -8,13 +8,18 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 
+<script src="teamUserClass.js"></script>
 <script>
     // load in list of team objects from local storage
     const teamsJSON = JSON.parse(localStorage.getItem("teams"));
     const teams = rebuildTeamsListFromJSON(teamsJSON);
 
-    //TODO create an array of words from all users
-
+    window.onload = () => {
+        //TODO create an array of words from all users
+    let gameWordsList = getWordsListAllTeams(teams);
+    //test array
+    console.log(gameWordsList);
+    }   
 
     function skipWord() {
         //this will skip the word, awarding no points, and add the word back to the stack of unguessed words

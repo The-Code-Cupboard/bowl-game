@@ -49,11 +49,21 @@ class User {
         this.userName = userName;
         this.wordList = wordList;
     }
+
+    changeUserName(newUserName) {
+        this.userName = newUserName; 
+    }
+
+    getUserName() {
+        return this.userName;
+    }
+
     addWord(word) {
         this.wordList.push(word);
     }
-    changeUserName(newUserName) {
-        this.userName = newUserName; 
+
+    getWordList() {
+        return this.wordList;
     }
 }
 
@@ -66,6 +76,19 @@ function rebuildTeamsListFromJSON(teamsData) {
         // create new User Objects for each user of a given team
         for (let memberIdx = 0; memberIdx < teamsData[teamIdx].members.length; memberIdx++) {
             teamsData[teamIdx].members[memberIdx] = new User(teamsData[teamIdx].members[memberIdx].userName, teamsData[teamIdx].members[memberIdx].wordList)
+        }
+    }
+    return output;
+}
+
+function getWordsListAllTeams(teams) {
+    let output = [];
+    for (let currentTeam of teams) {
+        console.log(currentTeam.getTeamName);
+        for (let currentMember of currentTeam.getMembersList()) {
+            for (let word of currentMember.getWordList()) {
+                output.push(word);
+            }
         }
     }
     return output;
