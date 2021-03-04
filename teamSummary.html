@@ -19,11 +19,15 @@
     document.getElementById("teamAName").innerHTML = teams[0].getTeamName();
     document.getElementById("teamAUserDisplay").innerHTML = teams[0].getNumMembers();
     document.getElementById("teamAWordCount").innerHTML = teams[0].getTotalTeamWords();
+
+    document.getElementById("teamBName").innerHTML = teams[1].getTeamName();
+    document.getElementById("teamBUserDisplay").innerHTML = teams[1].getNumMembers();
+    document.getElementById("teamBWordCount").innerHTML = teams[1].getTotalTeamWords();
 }
 </script>
 
 <body>
-    <header>`
+    <header>
         <h1>The Bowl Game</h1>
     </header>
     <main>
@@ -31,6 +35,10 @@
         <p>Team Name: <span id="teamAName"></span></p>
         <p>No. of Users: <span id="teamAUserDisplay"></span></p>
         <p>Words Submitted: <span id="teamAWordCount"></span></p>
+
+        <p>Team Name: <span id="teamBName"></span></p>
+        <p>No. of Users: <span id="teamBUserDisplay"></span></p>
+        <p>Words Submitted: <span id="teamBWordCount"></span></p>
         <button type="button"><a href="gamePage.html">Start Game</a></button>
     </main>
 </body>
