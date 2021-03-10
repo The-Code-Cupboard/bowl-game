@@ -12,10 +12,10 @@
 <script>
     // load in list of team objects from local storage
     const teamsJSON = JSON.parse(localStorage.getItem("teams"));
-    const teams = rebuildTeamsListFromJSON(teamsJSON);
+    const teams = getTeamsListFromJSON(teamsJSON);
 
     window.onload = () => {
-        //TODO create an array of words from all users
+    //TODO create an array of words from all users
     let gameWordsList = getWordsListAllTeams(teams);
     //test array
     console.log(gameWordsList);

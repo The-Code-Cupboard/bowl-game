@@ -16,10 +16,6 @@ function createTeams() {
         //create new Team objects and write to localStorage
         let team1 = new Team(team1Name);
         let team2 = new Team(team2Name);
-        console.log(team1);
-        console.log(team2);
-        console.log(team1Name);
-        console.log(team2Name);
         localStorage.setItem("teams", JSON.stringify([team1, team2]));
     }
 }

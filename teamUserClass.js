@@ -68,7 +68,7 @@ class User {
 }
 
 
-function rebuildTeamsListFromJSON(teamsData) {
+function getTeamsListFromJSON(teamsData) {
     let output = [];
     // create new Team Object for each team
     for (let teamIdx = 0; teamIdx < teamsData.length; teamIdx++) {
@@ -84,11 +84,8 @@ function rebuildTeamsListFromJSON(teamsData) {
 function getWordsListAllTeams(teams) {
     let output = [];
     for (let currentTeam of teams) {
-        console.log(currentTeam.getTeamName);
         for (let currentMember of currentTeam.getMembersList()) {
-            for (let word of currentMember.getWordList()) {
-                output.push(word);
-            }
+                output.push(...currentMember.getWordList());
         }
     }
     return output;

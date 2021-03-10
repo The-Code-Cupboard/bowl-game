@@ -12,7 +12,7 @@
 <script>
     // load in list of team objects from local storage
     const teamsJSON = JSON.parse(localStorage.getItem("teams"));
-    const teams = rebuildTeamsListFromJSON(teamsJSON);
+    const teams = getTeamsListFromJSON(teamsJSON);
 
     window.onload = () => {
     // populate team selection buttons with actual team names

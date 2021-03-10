@@ -13,7 +13,7 @@
 <script>
     // load in list of team objects from local storage
     const teamsJSON = JSON.parse(localStorage.getItem("teams"));
-    const teams = rebuildTeamsListFromJSON(teamsJSON);
+    const teams = getTeamsListFromJSON(teamsJSON);
 
     window.onload = function() {
     document.getElementById("teamAName").innerHTML = teams[0].getTeamName();
