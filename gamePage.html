@@ -17,9 +17,12 @@
     window.onload = () => {
     //TODO create an array of words from all users
     let gameWordsList = getWordsListAllTeams(teams);
-    //test array
     console.log(gameWordsList);
-    }   
+    let UserListInTurnOrder = getUserListInTurnOrder(teams);
+    console.log(UserListInTurnOrder);
+    }
+
+    window.alert("Press OK to start game:");
 
     function skipWord() {
         //this will skip the word, awarding no points, and add the word back to the stack of unguessed words
@@ -39,6 +42,10 @@
             <h2><span>TeamAB</span>: <span>User</span>'s Turn</h2>
             <h3>Word:</h3>
             <p>Display word here.</p>
+        </div>
+        <div>
+            <h2>Time Remaining:</h2>
+            <p>1:00</p>
         </div>
         <div>
             <button type="button"><a href="#" onclick="skipWord()">Skip Word</a></button>
