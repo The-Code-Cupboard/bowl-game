@@ -63,17 +63,19 @@ ul.no-bullets {
 
 .frontPageContainer { 
   display: flex;
+  flex-wrap: wrap;
 }
 
 .frontPageContainer section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex: 1 1 800px;
+  flex: 1 0 400px;
 }
 
 .frontPageContainer aside {
-  flex: 0 0 400px;
+  flex: 0 1 400px;
+  margin: 25px;
 }
 
 .frontPageContainer img {
@@ -82,7 +84,7 @@ ul.no-bullets {
 
 button {
   display: inline-block;
-  margin: 20px auto auto 40px;
+  margin: auto 0;
   padding: 10px 15px;
   border-radius: 15px;
   border: none;
@@ -97,13 +99,14 @@ a {
 
 .teamCreationContainer {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .teamCreationContainer section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex: 1 1 800px;
+  flex: 1 1 400px;
 }
 
 .teamCreationContainer aside {
@@ -146,8 +149,23 @@ a {
 .gamePrepContainer label {
   font-family: 'Poppins', sans-serif; 
 }
+
 .inlineButtons {
   display: flex;
   justify-content: flex-start;
 }
 
+.teamSummaryContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.teamSummaryContainer section {
+  display: flex;
+  justify-content: center;
+}
+
+.teamSummaryContainer section div {
+  margin: 25px;
+}
+ 
