@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Bowl Game</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Ranchers&display=swap" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -27,19 +29,25 @@
 </script>
 
 <body>
-    <header>
-        <h1>The Bowl Game</h1>
-    </header>
-    <main>
-        <h2>Team Summary</h2>
-        <p>Team Name: <span id="teamAName"></span></p>
-        <p>No. of Users: <span id="teamAUserDisplay"></span></p>
-        <p>Words Submitted: <span id="teamAWordCount"></span></p>
+    <div class="wrapper">
+        <header>
+            <h1>The Bowl Game</h1>
+        </header>
+        <main>
+            <h2>Team Summary</h2>
+            <p>Team Name: <span id="teamAName"></span></p>
+            <p>No. of Users: <span id="teamAUserDisplay"></span></p>
+            <p>Words Submitted: <span id="teamAWordCount"></span></p>
+            <p>Team Name: <span id="teamBName"></span></p>
+            <p>No. of Users: <span id="teamBUserDisplay"></span></p>
+            <p>Words Submitted: <span id="teamBWordCount"></span></p>
+            <button type="button"><a href="gamePage.html">Start Game</a></button>
+        </main>
 
-        <p>Team Name: <span id="teamBName"></span></p>
-        <p>No. of Users: <span id="teamBUserDisplay"></span></p>
-        <p>Words Submitted: <span id="teamBWordCount"></span></p>
-        <button type="button"><a href="gamePage.html">Start Game</a></button>
-    </main>
+        <footer>
+            <hr>
+            <p>The Holt Bros, 2021</p>
+        </footer>
+    </div>
 </body>
 </html>
