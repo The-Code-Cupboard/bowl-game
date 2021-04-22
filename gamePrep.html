@@ -1,13 +1,3 @@
-<script>
-    function getData() {
-        console.log("Hello");
-        console.log(document.getElementById("user_id").value);
-        console.log(document.getElementById("noun1").value);
-        console.log(document.getElementById("noun2").value);
-        console.log(document.getElementById("noun3").value);
-    }
-</script>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,24 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Bowl Game</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Ranchers&display=swap" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
+
+<script src="teamUserClass.js"></script>
+<script src="gamePrepController.js"></script>
+<script>
+    // load in list of team objects from local storage
+    const teamsJSON = JSON.parse(localStorage.getItem("teams"));
+    const teams = getTeamsListFromJSON(teamsJSON);
+
+    window.onload = () => {
+    // populate team selection buttons with actual team names
+    const team1Label = document.getElementById("team1RadioLabel");
+    team1Label.innerHTML = teams[0].getTeamName();
+    const team2Label = document.getElementById("team2RadioLabel");
+    team2Label.innerHTML = teams[1].getTeamName();
+}
+</script>
+
 <body>
-    <header>
-        <h1>The Bowl Game</h1>
-    </header>
-    <main>
-        <h2>Game Prep</h2>
-        <h3>Create a Username:</h3>
-        <input type="text" id="user_id" value="Create Username">
-        
-        <h3>Enter a few nouns:</h3>
-        <ul>
-            <li><input type="text" id="noun1" value="Name, Place or Thing"></li>
-            <li><input type="text" id="noun2" value="Name, Place or Thing"></li>
-            <li><input type="text" id="noun3" value="Name, Place or Thing"></li>
-        </ul>
-        <button type="button"><a href="#" onclick="getData()">Create Another User</a></button>
-        <button type="button"><a href="#">Done, Start Game</a></button>
-    </main>
+    <div class="wrapper">
+        <header>
+            <h1>The Bowl Game</h1>
+        </header>
+
+        <main class="gamePrepContainer">
+            <section>
+                <h2>Game Prep</h2>
+                <h3>Create a Username:</h3>
+                <form>
+                    <input type="text" id="user_id" placeholder="Username">
+                    <input type="radio" id="team1Radio" name="teamSelect" value="team1">
+                    <label for="team1Radio" id="team1RadioLabel">Team #1</label>
+                    <input type="radio" id="team2Radio" name="teamSelect" value="team2">
+                    <label for="team2Radio" id="team2RadioLabel">Team #2</label>
+                    <h3>Enter a few nouns:</h3>
+                    <ul class="no-bullets" id="nounList">
+                        <li><input type="text" class="nouns" placeholder="Person, Place or Thing" value=""></li>
+                        <li><input type="text" class="nouns" placeholder="Person, Place or Thing" value=""></li>
+                        <li><input type="text" class="nouns" placeholder="Person, Place or Thing" value=""></li>
+                    </ul>
+                    <button type="button"><a href="#" onclick="addTextField()">One More Noun...</a></button>
+                </form>
+                <div class="inlineButtons">
+                    <button type="button"><a href="#" onclick="createUser()">Create Another User</a></button>
+                    <button type="button"><a href="teamSummary.html" onclick="finalizeGamePrep()">Done</a></button>
+                </div>
+            </section>
+            <aside>
+                <img src="./assets/alphabet-cereal-bowl.png" alt="Cereal Bowl Full of Letters">
+            </aside>
+        </main>
+
+        <footer>
+            <hr>
+            <p>The Holt Bros, 2021</p>
+        </footer>
+    </div>
 </body>
 </html>

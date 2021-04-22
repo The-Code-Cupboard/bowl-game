@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bowl Game</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Ranchers&display=swap" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<script src="teamUserClass.js"></script>
+<!-- <script src="teamSummaryController.js"></script> -->
+<script>
+    // load in list of team objects from local storage
+    const teamsJSON = JSON.parse(localStorage.getItem("teams"));
+    const teams = getTeamsListFromJSON(teamsJSON);
+
+    window.onload = function() {
+    document.getElementById("teamAName").innerHTML = teams[0].getTeamName();
+    document.getElementById("teamAUserDisplay").innerHTML = teams[0].getNumMembers();
+    document.getElementById("teamAWordCount").innerHTML = teams[0].getTotalTeamWords();
+
+    document.getElementById("teamBName").innerHTML = teams[1].getTeamName();
+    document.getElementById("teamBUserDisplay").innerHTML = teams[1].getNumMembers();
+    document.getElementById("teamBWordCount").innerHTML = teams[1].getTotalTeamWords();
+}
+</script>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>The Bowl Game</h1>
+        </header>
+        <main class="teamSummaryContainer">
+            <h2>Team Summary</h2>
+            <section>
+                <div>
+                    <p>Team Name: <span id="teamAName"></span></p>
+                    <p>No. of Users: <span id="teamAUserDisplay"></span></p>
+                    <p>Words Submitted: <span id="teamAWordCount"></span></p>
+                </div>
+                <div>
+                    <p>Team Name: <span id="teamBName"></span></p>
+                    <p>No. of Users: <span id="teamBUserDisplay"></span></p>
+                    <p>Words Submitted: <span id="teamBWordCount"></span></p>
+                </div>
+            </section>
+            <button type="button"><a href="gamePage.html">Start Game</a></button>
+        </main>
+
+        <footer>
+            <hr>
+            <p>The Holt Bros, 2021</p>
+        </footer>
+    </div>
+</body>
+</html>
