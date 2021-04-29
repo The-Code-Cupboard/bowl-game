@@ -5,25 +5,22 @@ import Words from './components/Words'
 import AddWord from './components/AddWord'
 import Footer from './components/Footer'
 import About from './components/About'
+import UserNameBox from './components/UserNameBox'
+import { fetchWords } from './services'
+
 
 const App = () => {
     const [showAddWord, setShowAddWord] = useState(false)
     const [words, setWords] = useState([])
 
+    const getWords = async () => {
+        const wordsFromServer = await fetchWords()
+        setWords(wordsFromServer)
+    }
+
     useEffect(() => {
-        const getWords = async () => {
-            const wordsFromServer = await fetchWords()
-            setWords(wordsFromServer)
-        }
         getWords()
     }, [])
-
-    // Fetch Words
-    const fetchWords = async () => {
-        const res = await fetch('http://localhost:5000/words')
-        const data = await res.json()
-        return data
-    }
 
     // Add Word
     const addWord = async (word) => {
@@ -37,7 +34,9 @@ const App = () => {
         
         const data = await res.json()
 
-        setWords([...words, data])
+        //setWords(await fetchWords)
+        getWords()
+        //setWords([...words, data])
     }
 
     // Delete Word
@@ -46,7 +45,8 @@ const App = () => {
             method: 'DELETE'
         })
 
-        setWords(words.filter((word) => word.id !== id))
+        getWords()
+        //setWords(words.filter((word) => word.id !== id))
     }
 
     return (
@@ -56,6 +56,7 @@ const App = () => {
                 
                 <Route path='/' exact render={(props) =>(
                     <>
+                        <UserNameBox/>
                         {showAddWord && <AddWord onAdd={addWord} />}
                         {words.length > 0 ? <Words words={words} onDelete={deleteWord} /> : 'No words to show... yet!! :)'}
                     </>

@@ -2,7 +2,7 @@
 
 installs dependencies
 
-### json-server --watch db.json --port 5000
+### npm run server
 
 runs json-server as mock backend
 
