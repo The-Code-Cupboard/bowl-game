@@ -6,12 +6,14 @@ import AddWord from "./components/AddWord";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import UserNameBox from "./components/UserNameBox";
-import { fetchWords, postWord, deleteWord } from "./services";
+import { fetchWords, postWord, deleteWord, fetchUsers, postUser } from "./services";
 
 const App = () => {
   const [showAddWord, setShowAddWord] = useState(false);
   const [words, setWords] = useState([]);
+  const [users, setUsers] = useState([]);
 
+  //Word Operations...
   const getWords = async () => {
     const wordsFromServer = await fetchWords();
     setWords(wordsFromServer);
@@ -27,8 +29,22 @@ const App = () => {
     getWords();
   };
 
+  //User Operations...
+  const getUsers = async () => {
+    const usersFromServer = await fetchUsers();
+    setUsers(usersFromServer);
+  }
+
+  const addUser = async(myUsername) => {
+    await postUser(myUsername);
+    getUsers();
+  }
+
+
+
   useEffect(() => {
     getWords();
+    getUsers();
   }, []);
 
   return (
@@ -44,7 +60,7 @@ const App = () => {
           exact
           render={(props) => (
             <>
-              <UserNameBox />
+              <UserNameBox onAdd={addUser}/>
               {showAddWord && <AddWord onAdd={addWord} />}
               {words.length > 0 ? (
                 <Words words={words} onDelete={removeWord} />
