@@ -6,7 +6,7 @@ const Word = ( {word, onDelete} ) => {
             <h3>
                 {word.text} <FaTimes onClick={() => onDelete(word.id)} /> 
             </h3>
-            <p>{word.user}</p>
+            <p>{word.userId}</p>
         </div>
     )
 }
