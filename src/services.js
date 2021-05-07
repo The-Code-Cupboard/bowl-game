@@ -22,3 +22,22 @@ export const deleteWord = async (id) => {
     method: "DELETE",
   });
 };
+
+
+// Fetch Users
+export const fetchUsers = async () => {
+  const res = await fetch("http://localhost:5000/users");
+  const data = await res.json();
+  return data;
+};
+
+// Add User
+export const postUser = async (username) => {
+  await fetch("http://localhost:5000/users", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({ username: username }),
+  });
+};
