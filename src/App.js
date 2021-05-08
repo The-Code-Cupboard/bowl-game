@@ -6,7 +6,13 @@ import AddWord from "./components/AddWord";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import UserNameBox from "./components/UserNameBox";
-import { fetchWords, postWord, deleteWord, fetchUsers, postUser } from "./services";
+import {
+  fetchWords,
+  postWord,
+  deleteWord,
+  fetchUsers,
+  postUser,
+} from "./services";
 
 const App = () => {
   const [showAddWord, setShowAddWord] = useState(false);
@@ -33,14 +39,12 @@ const App = () => {
   const getUsers = async () => {
     const usersFromServer = await fetchUsers();
     setUsers(usersFromServer);
-  }
+  };
 
-  const addUser = async(myUsername) => {
+  const addUser = async (myUsername) => {
     await postUser(myUsername);
     getUsers();
-  }
-
-
+  };
 
   useEffect(() => {
     getWords();
@@ -60,7 +64,7 @@ const App = () => {
           exact
           render={(props) => (
             <>
-              <UserNameBox onAdd={addUser}/>
+              <UserNameBox onAdd={addUser} />
               {showAddWord && <AddWord onAdd={addWord} />}
               {words.length > 0 ? (
                 <Words words={words} onDelete={removeWord} />
