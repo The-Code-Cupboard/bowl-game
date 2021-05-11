@@ -43,12 +43,12 @@ const App = () => {
 
   const addUser = async (myUsername) => {
     await postUser(myUsername);
-    getUsers();
+    //getUsers(); // probably not needed
   };
 
   useEffect(() => {
     getWords();
-    getUsers();
+    //getUsers(); //probably not needed
   }, []);
 
   return (
