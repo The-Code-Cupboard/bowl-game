@@ -14,24 +14,34 @@ const useStyles = makeStyles((theme) => ({
 
 const UserNameBox = ({ onAdd }) => {
   const classes = useStyles();
-  const [text, setText] = useState("");
+  const [username, setUsername] = useState("");
   const [nameSub, setNameSub] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!text) {
-      alert("Enter a username");
+    if (!username) {
+      alert("Please enter a username");
       return;
     }
 
     setNameSub(true);
-    onAdd(text);
+    onAdd(username);
+  };
+
+  const resetUser = () => {
+    setUsername("");
+    setNameSub(false);
   };
 
   // Gavyn to add label for username-input
   return nameSub ? (
-    <h2>Welcome, {text}</h2>
+    <div className="usernameBox">
+      <h2>Welcome, {username}</h2>
+      <button className="btn" onClick={resetUser}>
+        Reset Name
+      </button>
+    </div>
   ) : (
     <form
       className={classes.root}
@@ -43,8 +53,8 @@ const UserNameBox = ({ onAdd }) => {
         id="username-input"
         label="User Name"
         variant="outlined"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+        //value={text}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <input type="submit" value="Create User" className="btn" />
     </form>
