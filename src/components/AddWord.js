@@ -11,7 +11,8 @@ const AddWord = ({ onAdd }) => {
       return;
     }
 
-    onAdd(text);
+    const username = "testUser"; //can we import this from UserNameBox??
+    onAdd(text, username);
 
     setText("");
   };

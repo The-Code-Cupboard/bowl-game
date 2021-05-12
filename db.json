@@ -14,6 +14,24 @@
       "id": 3,
       "text": "Bears",
       "userId": "2"
+    },
+    {
+      "text": "Oh my!",
+      "userId": "1",
+      "id": 4
+    },
+    {
+      "text": "test",
+      "id": 5
+    },
+    {
+      "text": "testing",
+      "id": 6
+    },
+    {
+      "text": "elephants",
+      "userId": "testUser",
+      "id": 7
     }
   ],
   "users": [
@@ -32,6 +50,22 @@
     {
       "username": "Nicky-poo",
       "id": 4
+    },
+    {
+      "username": "ggg",
+      "id": 5
+    },
+    {
+      "username": "asdf",
+      "id": 6
+    },
+    {
+      "username": "ggg",
+      "id": 7
+    },
+    {
+      "username": "hahahaha",
+      "id": 8
     }
   ]
 }

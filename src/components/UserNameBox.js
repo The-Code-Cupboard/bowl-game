@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 const UserNameBox = ({ onAdd }) => {
   const classes = useStyles();
   const [username, setUsername] = useState("");
-  const [nameSub, setNameSub] = useState(false);
+  const [isUsernameSet, setIsUsernameSet] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -25,17 +25,17 @@ const UserNameBox = ({ onAdd }) => {
       return;
     }
 
-    setNameSub(true);
+    setIsUsernameSet(true);
     onAdd(username);
   };
 
   const resetUser = () => {
     setUsername("");
-    setNameSub(false);
+    setIsUsernameSet(false);
   };
 
   // Gavyn to add label for username-input
-  return nameSub ? (
+  return isUsernameSet ? (
     <div className="usernameBox">
       <h2>Welcome, {username}</h2>
       <button className="btn" onClick={resetUser}>

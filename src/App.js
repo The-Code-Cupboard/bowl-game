@@ -25,8 +25,8 @@ const App = () => {
     setWords(wordsFromServer);
   };
 
-  const addWord = async (myWord) => {
-    await postWord(myWord);
+  const addWord = async (myWord, myUsername) => {
+    await postWord(myWord, myUsername);
     getWords();
   };
 
