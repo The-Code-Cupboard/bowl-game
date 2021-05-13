@@ -12,32 +12,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserNameBox = ({ onAdd }) => {
+const UserNameBox = ({ onAdd, onDelete }) => {
   const classes = useStyles();
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState("");
   const [isUsernameSet, setIsUsernameSet] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!username) {
+    if (!user) {
       alert("Please enter a username");
       return;
     }
 
     setIsUsernameSet(true);
-    onAdd(username);
+    onAdd(user);
   };
 
-  const resetUser = () => {
-    setUsername("");
+  const resetUser = (username) => {
+    setUser("");
+    onDelete(username);
     setIsUsernameSet(false);
   };
 
-  // Gavyn to add label for username-input
   return isUsernameSet ? (
     <div className="usernameBox">
-      <h2>Welcome, {username}</h2>
+      <h2>Welcome, {user}</h2>
       <button className="btn" onClick={resetUser}>
         Reset Name
       </button>
@@ -54,7 +54,9 @@ const UserNameBox = ({ onAdd }) => {
         label="User Name"
         variant="outlined"
         //value={text}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => {
+          setUser(e.target.value);
+        }}
       />
       <input type="submit" value="Create User" className="btn" />
     </form>

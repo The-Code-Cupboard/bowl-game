@@ -1,3 +1,5 @@
+import { nanoid } from "nanoid";
+
 const HOST = "http://localhost:5000/";
 // const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
 
@@ -34,12 +36,19 @@ export const fetchUsers = async () => {
 };
 
 // Add User
-export const postUser = async (username) => {
+export const postUser = async (user) => {
   await fetch(HOST + "users", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify({ username: username }),
+    body: JSON.stringify({ username: user, id: nanoid() }),
+  });
+};
+
+// Delete Word
+export const deleteUser = async (username) => {
+  await fetch(`${HOST}users/${username}`, {
+    method: "DELETE",
   });
 };

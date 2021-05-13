@@ -12,6 +12,7 @@ import {
   deleteWord,
   fetchUsers,
   postUser,
+  deleteUser,
 } from "./services";
 
 const App = () => {
@@ -41,14 +42,18 @@ const App = () => {
     setUsers(usersFromServer);
   };
 
-  const addUser = async (myUsername) => {
-    await postUser(myUsername);
-    //getUsers(); // probably not needed
+  const addUser = async (myUser) => {
+    await postUser(myUser);
+    // getUsers();
+  };
+
+  const removeUser = async (myUsername) => {
+    await deleteUser(myUsername);
   };
 
   useEffect(() => {
     getWords();
-    //getUsers(); //probably not needed
+    // getUsers();
   }, []);
 
   return (
@@ -64,7 +69,7 @@ const App = () => {
           exact
           render={(props) => (
             <>
-              <UserNameBox onAdd={addUser} />
+              <UserNameBox onAdd={addUser} onDelete={removeUser} />
               {showAddWord && <AddWord onAdd={addWord} />}
               {words.length > 0 ? (
                 <Words words={words} onDelete={removeWord} />
