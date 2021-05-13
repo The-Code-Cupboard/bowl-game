@@ -1,28 +1,9 @@
 {
-  "words": [
-    {
-      "text": "asdfasdf",
-      "userId": "testUser",
-      "id": 1
-    },
-    {
-      "text": "verboten",
-      "userId": "testUser",
-      "id": 2
-    }
-  ],
+  "words": [],
   "users": [
     {
-      "username": "Nick",
-      "id": "JTjcGjgGbrKYja6fr61b2"
-    },
-    {
-      "username": "Gavyn",
-      "id": "nxKRiHhk1kNvhDNjv-5x2"
-    },
-    {
-      "username": "ggg",
-      "id": "8BTjhAPMLr0k17JU5w-9S"
+      "username": "Gavatron",
+      "id": "09B40Fni-OqrcPK15FDxB"
     }
   ]
 }

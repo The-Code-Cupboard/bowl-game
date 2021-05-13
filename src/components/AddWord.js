@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddWord = ({ onAdd }) => {
+const AddWord = ({ onAdd, userId }) => {
   const [text, setText] = useState("");
 
   const onSubmit = (e) => {
@@ -10,9 +10,7 @@ const AddWord = ({ onAdd }) => {
       alert("Enter a word in the form, eh!");
       return;
     }
-
-    const username = "testUser"; //can we import this from UserNameBox??
-    onAdd(text, username);
+    onAdd(text, userId);
 
     setText("");
   };

@@ -14,11 +14,13 @@ import {
   postUser,
   deleteUser,
 } from "./services";
+import { nanoid } from "nanoid";
 
 const App = () => {
   const [showAddWord, setShowAddWord] = useState(false);
   const [words, setWords] = useState([]);
   const [users, setUsers] = useState([]);
+  const userId = nanoid();
 
   //Word Operations...
   const getWords = async () => {
@@ -43,12 +45,13 @@ const App = () => {
   };
 
   const addUser = async (myUser) => {
-    await postUser(myUser);
+    await postUser(myUser, userId);
     // getUsers();
   };
 
-  const removeUser = async (myUsername) => {
-    await deleteUser(myUsername);
+  // currently deletes user by nanoid
+  const removeUser = async () => {
+    await deleteUser(userId);
   };
 
   useEffect(() => {
@@ -70,7 +73,7 @@ const App = () => {
           render={(props) => (
             <>
               <UserNameBox onAdd={addUser} onDelete={removeUser} />
-              {showAddWord && <AddWord onAdd={addWord} />}
+              {showAddWord && <AddWord onAdd={addWord} userId={userId} />}
               {words.length > 0 ? (
                 <Words words={words} onDelete={removeWord} />
               ) : (

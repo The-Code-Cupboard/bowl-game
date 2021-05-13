@@ -36,19 +36,19 @@ export const fetchUsers = async () => {
 };
 
 // Add User
-export const postUser = async (user) => {
+export const postUser = async (user, userId) => {
   await fetch(HOST + "users", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify({ username: user, id: nanoid() }),
+    body: JSON.stringify({ username: user, id: userId }),
   });
 };
 
 // Delete Word
-export const deleteUser = async (username) => {
-  await fetch(`${HOST}users/${username}`, {
+export const deleteUser = async (userId) => {
+  await fetch(`${HOST}users/${userId}`, {
     method: "DELETE",
   });
 };
