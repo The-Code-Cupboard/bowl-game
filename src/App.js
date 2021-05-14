@@ -20,7 +20,7 @@ const App = () => {
   const [showAddWord, setShowAddWord] = useState(false);
   const [words, setWords] = useState([]);
   const [users, setUsers] = useState([]);
-  const userId = nanoid();
+  const [userId, setUserId] = useState(nanoid());
 
   //Word Operations...
   const getWords = async () => {
@@ -28,8 +28,8 @@ const App = () => {
     setWords(wordsFromServer);
   };
 
-  const addWord = async (myWord, myUsername) => {
-    await postWord(myWord, myUsername);
+  const addWord = async (myWord) => {
+    await postWord(myWord, userId);
     getWords();
   };
 
