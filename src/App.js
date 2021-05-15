@@ -13,6 +13,9 @@ import {
   fetchUsers,
   postUser,
   deleteUser,
+  setCookie,
+  getCookie,
+  eraseCookie,
 } from "./services";
 import { nanoid } from "nanoid";
 
@@ -39,6 +42,12 @@ const App = () => {
   };
 
   //User Operations...
+  const setUserIdCookie = () => {
+    let cookieName = "userId";
+    if (getCookie(cookieName) === null) {
+      setCookie(cookieName, nanoid(), 1);
+    }
+  };
   const getUsers = async () => {
     const usersFromServer = await fetchUsers();
     setUsers(usersFromServer);
@@ -57,6 +66,8 @@ const App = () => {
   useEffect(() => {
     getWords();
     // getUsers();
+    setUserIdCookie();
+    console.log(document.cookie);
   }, []);
 
   return (
