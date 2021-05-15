@@ -23,9 +23,9 @@ const App = () => {
   const [showAddWord, setShowAddWord] = useState(false);
   const [words, setWords] = useState([]);
   const [users, setUsers] = useState([]);
-  const [userId, setUserId] = useState(nanoid());
+  const [userId, setUserId] = useState();
 
-  //Word Operations...
+  // Word Operations...
   const getWords = async () => {
     const wordsFromServer = await fetchWords();
     setWords(wordsFromServer);
@@ -41,13 +41,24 @@ const App = () => {
     getWords();
   };
 
-  //User Operations...
+  // User Operations...
   const setUserIdCookie = () => {
     let cookieName = "userId";
     if (getCookie(cookieName) === null) {
       setCookie(cookieName, nanoid(), 1);
     }
   };
+
+  const getUserIdFromCookie = () => {
+    let cookieName = "userId";
+    if (getCookie(cookieName) !== null) {
+      setUserId(getCookie(cookieName));
+    } else {
+      setUserIdCookie();
+      getUserIdFromCookie();
+    }
+  };
+
   const getUsers = async () => {
     const usersFromServer = await fetchUsers();
     setUsers(usersFromServer);
@@ -66,7 +77,7 @@ const App = () => {
   useEffect(() => {
     getWords();
     // getUsers();
-    setUserIdCookie();
+    getUserIdFromCookie();
     console.log(document.cookie);
   }, []);
 

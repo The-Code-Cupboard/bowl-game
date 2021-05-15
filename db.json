@@ -1,25 +1,4 @@
 {
-  "words": [
-    {
-      "text": "Lions",
-      "userId": "BNTWoHtpXomLSYJ6eZe9Y",
-      "id": 1
-    },
-    {
-      "text": "Tigers",
-      "userId": "BNTWoHtpXomLSYJ6eZe9Y",
-      "id": 2
-    },
-    {
-      "text": "Bears",
-      "userId": "BNTWoHtpXomLSYJ6eZe9Y",
-      "id": 3
-    }
-  ],
-  "users": [
-    {
-      "username": "Gavatron",
-      "id": "BNTWoHtpXomLSYJ6eZe9Y"
-    }
-  ]
+  "words": [],
+  "users": []
 }
