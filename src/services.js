@@ -1,5 +1,5 @@
-const HOST = "http://localhost:5000/";
-// const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
+//const HOST = "http://localhost:5000/";
+const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
 
 // Fetch Words
 export const fetchWords = async () => {
