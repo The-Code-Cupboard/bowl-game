@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddWord = ({ onAdd }) => {
+const AddWord = ({ onAdd, userId }) => {
   const [text, setText] = useState("");
 
   const onSubmit = (e) => {
@@ -10,8 +10,7 @@ const AddWord = ({ onAdd }) => {
       alert("Enter a word in the form, eh!");
       return;
     }
-
-    onAdd(text);
+    onAdd(text, userId);
 
     setText("");
   };

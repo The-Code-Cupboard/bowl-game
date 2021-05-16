@@ -1,37 +1,4 @@
 {
-  "words": [
-    {
-      "id": 1,
-      "text": "Lions",
-      "userId": "1"
-    },
-    {
-      "id": 2,
-      "text": "Tigers",
-      "userId": "2"
-    },
-    {
-      "id": 3,
-      "text": "Bears",
-      "userId": "2"
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "username": "sergeantskills"
-    },
-    {
-      "id": 2,
-      "username": "gavatron"
-    },
-    {
-      "username": "Gavyn",
-      "id": 3
-    },
-    {
-      "username": "Nicky-poo",
-      "id": 4
-    }
-  ]
+  "words": [],
+  "users": []
 }
