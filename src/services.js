@@ -53,6 +53,7 @@ export const deleteUser = async (userId) => {
 
 // Fetch Username by ID
 export const fetchUsername = async (userId) => {
+  console.log(`fetchUsername called with id: ${userId}`);
   const res = await fetch(`${HOST}users/${userId}`);
   const userData = await res.json();
   return userData;

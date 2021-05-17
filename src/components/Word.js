@@ -3,7 +3,7 @@ import { fetchUsername } from "../services";
 import { useState } from "react";
 
 const Word = ({ word, onDelete }) => {
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState("default");
   const getUsername = async () => {
     const user = await fetchUsername(word.userId);
     setUsername(user.username);
@@ -11,6 +11,7 @@ const Word = ({ word, onDelete }) => {
 
   getUsername();
   console.log(`${word.text} - username from server is: ${username}`);
+  console.log(`${word}`);
 
   return (
     <div className="word">
