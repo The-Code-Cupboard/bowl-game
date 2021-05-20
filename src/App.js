@@ -94,7 +94,11 @@ const App = () => {
           exact
           render={(props) => (
             <>
-              <UserNameBox onAdd={addUser} onDelete={removeUser} />
+              <UserNameBox
+                onAdd={addUser}
+                onDelete={removeUser}
+                userId={userId}
+              />
               {showAddWord && <AddWord onAdd={addWord} userId={userId} />}
               {words.length > 0 ? (
                 <Words words={words} onDelete={removeWord} />

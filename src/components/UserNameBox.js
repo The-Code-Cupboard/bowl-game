@@ -12,30 +12,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserNameBox = ({ onAdd, onDelete }) => {
+const UserNameBox = ({ onAdd, onDelete, userId }) => {
   const classes = useStyles();
   const [username, setUsername] = useState("");
-  const [isUsernameSet, setIsUsernameSet] = useState(false);
+  const [showUsernameField, setShowUsernameField] = useState(true);
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     if (!username) {
       alert("Please enter a username");
       return;
     }
-
-    setIsUsernameSet(true);
+    setShowUsernameField(false);
     onAdd(username);
   };
 
   const resetUser = (username) => {
     setUsername("");
     onDelete(username);
-    setIsUsernameSet(false);
+    setShowUsernameField(true);
   };
 
-  return isUsernameSet ? (
+  return !showUsernameField ? (
     <div className="usernameBox">
       <h2>Welcome, {username}</h2>
       <button className="btn" onClick={resetUser}>
