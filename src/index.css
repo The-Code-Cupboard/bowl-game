@@ -27,6 +27,12 @@ body {
   margin-bottom: 20px;
 }
 
+.usernameBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .btn {
   display: inline-block;
   background: #000;

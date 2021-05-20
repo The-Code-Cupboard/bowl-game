@@ -6,21 +6,33 @@ import AddWord from "./components/AddWord";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import UserNameBox from "./components/UserNameBox";
-import { fetchWords, postWord, deleteWord, fetchUsers, postUser } from "./services";
+import {
+  fetchWords,
+  postWord,
+  deleteWord,
+  fetchUsers,
+  postUser,
+  deleteUser,
+  setCookie,
+  getCookie,
+  eraseCookie,
+} from "./services";
+import { nanoid } from "nanoid";
 
 const App = () => {
   const [showAddWord, setShowAddWord] = useState(false);
   const [words, setWords] = useState([]);
   const [users, setUsers] = useState([]);
+  const [userId, setUserId] = useState();
 
-  //Word Operations...
+  // Word Operations...
   const getWords = async () => {
     const wordsFromServer = await fetchWords();
     setWords(wordsFromServer);
   };
 
   const addWord = async (myWord) => {
-    await postWord(myWord);
+    await postWord(myWord, userId);
     getWords();
   };
 
@@ -29,22 +41,44 @@ const App = () => {
     getWords();
   };
 
-  //User Operations...
+  // User Operations...
+  const setUserIdCookie = () => {
+    let cookieName = "userId";
+    if (getCookie(cookieName) === null) {
+      setCookie(cookieName, nanoid(), 1);
+    }
+  };
+
+  const getUserIdFromCookie = () => {
+    let cookieName = "userId";
+    if (getCookie(cookieName) !== null) {
+      setUserId(getCookie(cookieName));
+    } else {
+      setUserIdCookie();
+      getUserIdFromCookie();
+    }
+  };
+
   const getUsers = async () => {
     const usersFromServer = await fetchUsers();
     setUsers(usersFromServer);
-  }
+  };
 
-  const addUser = async(myUsername) => {
-    await postUser(myUsername);
-    getUsers();
-  }
+  const addUser = async (myUser) => {
+    await postUser(myUser, userId);
+    // getUsers();
+  };
 
-
+  // currently deletes user by nanoid
+  const removeUser = async () => {
+    await deleteUser(userId);
+  };
 
   useEffect(() => {
     getWords();
-    getUsers();
+    // getUsers();
+    getUserIdFromCookie();
+    console.log(document.cookie);
   }, []);
 
   return (
@@ -60,8 +94,12 @@ const App = () => {
           exact
           render={(props) => (
             <>
-              <UserNameBox onAdd={addUser}/>
-              {showAddWord && <AddWord onAdd={addWord} />}
+              <UserNameBox
+                onAdd={addUser}
+                onDelete={removeUser}
+                userId={userId}
+              />
+              {showAddWord && <AddWord onAdd={addWord} userId={userId} />}
               {words.length > 0 ? (
                 <Words words={words} onDelete={removeWord} />
               ) : (
