@@ -1,5 +1,11 @@
+// JSON mock server
 //const HOST = "http://localhost:5000/";
-const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
+
+// Heroku
+// const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
+
+// Local Node JS Server
+const HOST = "http://localhost:5000/api/";
 
 // Fetch Words
 export const fetchWords = async () => {
@@ -33,7 +39,7 @@ export const fetchUsers = async () => {
   return data;
 };
 
-// Add User
+// Add or Update User (logic is in the backend)
 export const postUser = async (user, userId) => {
   await fetch(HOST + "users", {
     method: "POST",
@@ -53,7 +59,6 @@ export const deleteUser = async (userId) => {
 
 // Fetch Username by ID
 export const fetchUsername = async (userId) => {
-  console.log(`fetchUsername called with id: ${userId}`);
   const res = await fetch(`${HOST}users/${userId}`);
   const userData = await res.json();
   return userData;

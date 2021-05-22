@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserNameBox = ({ onAdd, onDelete, userId }) => {
+const UserNameBox = ({ onAdd }) => {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [showUsernameField, setShowUsernameField] = useState(true);
@@ -23,13 +23,12 @@ const UserNameBox = ({ onAdd, onDelete, userId }) => {
       alert("Please enter a username");
       return;
     }
-    setShowUsernameField(false);
     onAdd(username);
+    setShowUsernameField(false);
   };
 
-  const resetUser = (username) => {
+  const resetUser = () => {
     setUsername("");
-    onDelete(username);
     setShowUsernameField(true);
   };
 

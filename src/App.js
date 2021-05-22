@@ -12,10 +12,12 @@ import {
   deleteWord,
   fetchUsers,
   postUser,
+  updateUser,
   deleteUser,
   setCookie,
   getCookie,
   eraseCookie,
+  fetchUsername,
 } from "./services";
 import { nanoid } from "nanoid";
 
@@ -64,9 +66,9 @@ const App = () => {
     setUsers(usersFromServer);
   };
 
-  const addUser = async (myUser) => {
-    await postUser(myUser, userId);
-    // getUsers();
+  // Add or Update User
+  const addUser = async (myUsername) => {
+    await postUser(myUsername, userId);
   };
 
   // currently deletes user by nanoid
@@ -76,7 +78,7 @@ const App = () => {
 
   useEffect(() => {
     getWords();
-    // getUsers();
+    getUsers();
     getUserIdFromCookie();
     console.log(document.cookie);
   }, []);
@@ -96,8 +98,8 @@ const App = () => {
             <>
               <UserNameBox
                 onAdd={addUser}
-                onDelete={removeUser}
-                userId={userId}
+                onModify={removeUser} //deprecated
+                userId={userId} //deprecated
               />
               {showAddWord && <AddWord onAdd={addWord} userId={userId} />}
               {words.length > 0 ? (
