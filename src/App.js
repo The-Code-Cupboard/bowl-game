@@ -17,6 +17,7 @@ import {
   setCookie,
   getCookie,
   eraseCookie,
+  fetchUsername,
 } from "./services";
 import { nanoid } from "nanoid";
 
@@ -69,10 +70,13 @@ const App = () => {
   // If userId not found on server, add new user
   // Else, modify user
   const addUser = async (myUsername) => {
-    // getUsers(); // do this before checking?
-    const found = users.some((user) => user.id === userId);
+    await getUsers(); // do this before checking?
+    const found = fetchUsername(userId);
+
     if (found) {
       await updateUser(myUsername, userId);
+      // reload username within words
+      // maybe use the UseEffect() with dependencies??
     } else {
       await postUser(myUsername, userId);
     }

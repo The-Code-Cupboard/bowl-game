@@ -52,7 +52,7 @@ export const postUser = async (user, userId) => {
 
 // Update User
 export const updateUser = async (user, userId) => {
-  await fetch(`${HOST}users/${userId}`, {
+  await fetch(`${HOST}users`, {
     method: "PUT",
     headers: {
       "Content-tye": "application/json",
@@ -70,7 +70,6 @@ export const deleteUser = async (userId) => {
 
 // Fetch Username by ID
 export const fetchUsername = async (userId) => {
-  console.log(`fetchUsername called with id: ${userId}`);
   const res = await fetch(`${HOST}users/${userId}`);
   const userData = await res.json();
   return userData;

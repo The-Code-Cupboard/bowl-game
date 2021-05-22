@@ -10,8 +10,6 @@ const Word = ({ word, onDelete }) => {
   };
 
   getUsername();
-  console.log(`${word.text} - username from server is: ${username}`);
-  console.log(`${word}`);
 
   return (
     <div className="word">
