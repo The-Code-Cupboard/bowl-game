@@ -12,6 +12,7 @@ import {
   deleteWord,
   fetchUsers,
   postUser,
+  updateUser,
   deleteUser,
   setCookie,
   getCookie,
