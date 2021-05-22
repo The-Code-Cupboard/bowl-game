@@ -1,5 +1,11 @@
+// JSON mock server
 //const HOST = "http://localhost:5000/";
-const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
+
+// Heroku
+// const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
+
+// Local Node JS Server
+const HOST = "http://localhost:5000/api/";
 
 // Fetch Words
 export const fetchWords = async () => {
