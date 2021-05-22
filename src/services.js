@@ -44,6 +44,17 @@ export const postUser = async (user, userId) => {
   });
 };
 
+// Update User
+export const updateUser = async (user, userId) => {
+  await fetch(`${HOST}users/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-tye": "application/json",
+    },
+    body: JSON.stringify({ username: user, id: userId }),
+  });
+};
+
 // Delete User
 export const deleteUser = async (userId) => {
   await fetch(`${HOST}users/${userId}`, {

@@ -64,9 +64,17 @@ const App = () => {
     setUsers(usersFromServer);
   };
 
-  const addUser = async (myUser) => {
-    await postUser(myUser, userId);
-    // getUsers();
+  // Add or Update User
+  // If userId not found on server, add new user
+  // Else, modify user
+  const addUser = async (myUsername) => {
+    // getUsers(); // do this before checking?
+    const found = users.some((user) => user.id === userId);
+    if (found) {
+      await updateUser(myUsername, userId);
+    } else {
+      await postUser(myUsername, userId);
+    }
   };
 
   // currently deletes user by nanoid
@@ -76,7 +84,7 @@ const App = () => {
 
   useEffect(() => {
     getWords();
-    // getUsers();
+    getUsers();
     getUserIdFromCookie();
     console.log(document.cookie);
   }, []);
@@ -96,8 +104,8 @@ const App = () => {
             <>
               <UserNameBox
                 onAdd={addUser}
-                onDelete={removeUser}
-                userId={userId}
+                onModify={removeUser} //deprecated
+                userId={userId} //deprecated
               />
               {showAddWord && <AddWord onAdd={addWord} userId={userId} />}
               {words.length > 0 ? (
