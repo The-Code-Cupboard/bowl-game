@@ -67,19 +67,8 @@ const App = () => {
   };
 
   // Add or Update User
-  // If userId not found on server, add new user
-  // Else, modify user
   const addUser = async (myUsername) => {
-    await getUsers(); // do this before checking?
-    const found = fetchUsername(userId);
-
-    if (found) {
-      await updateUser(myUsername, userId);
-      // reload username within words
-      // maybe use the UseEffect() with dependencies??
-    } else {
-      await postUser(myUsername, userId);
-    }
+    await postUser(myUsername, userId);
   };
 
   // currently deletes user by nanoid

@@ -23,8 +23,8 @@ const UserNameBox = ({ onAdd }) => {
       alert("Please enter a username");
       return;
     }
-    setShowUsernameField(false);
     onAdd(username);
+    setShowUsernameField(false);
   };
 
   const resetUser = () => {

@@ -39,23 +39,12 @@ export const fetchUsers = async () => {
   return data;
 };
 
-// Add User
+// Add or Update User (logic is in the backend)
 export const postUser = async (user, userId) => {
   await fetch(HOST + "users", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
-    },
-    body: JSON.stringify({ username: user, id: userId }),
-  });
-};
-
-// Update User
-export const updateUser = async (user, userId) => {
-  await fetch(`${HOST}users`, {
-    method: "PUT",
-    headers: {
-      "Content-tye": "application/json",
     },
     body: JSON.stringify({ username: user, id: userId }),
   });
