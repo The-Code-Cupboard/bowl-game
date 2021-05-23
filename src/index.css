@@ -15,7 +15,7 @@ body {
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  border: 1px solid #3c5aed;
   padding: 30px;
   border-radius: 5px;
 }
@@ -35,7 +35,7 @@ body {
 
 .btn {
   display: inline-block;
-  background: #000;
+  background: #3cb2ed;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -62,13 +62,14 @@ body {
 
 .word {
   background: #f4f4f4;
+  border-left: 7px solid #3cedd0;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
 }
 
 .word.reminder {
-  border-left: 5px solid green;
+  border-left: 5px solid #2ae6ff;
 }
 
 .word h3 {
@@ -115,4 +116,9 @@ body {
 footer {
   margin-top: 30px;
   text-align: center;
+}
+
+.about ul {
+  padding-left: 40px;
+  list-style: square outside none;
 }
