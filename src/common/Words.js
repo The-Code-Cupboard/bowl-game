@@ -1,10 +1,11 @@
 import Word from "./Word";
 
 const Words = ({ words, onDelete }) => {
+  console.log("words: ", words);
   return (
     <>
       {words.map((word) => (
-        <Word key={word.id} word={word} onDelete={onDelete} />
+        <Word word={word} onDelete={onDelete} />
       ))}
     </>
   );

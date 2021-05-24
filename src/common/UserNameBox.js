@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,9 +36,9 @@ const UserNameBox = ({ onAdd }) => {
   return !showUsernameField ? (
     <div className="usernameBox">
       <h2>Welcome, {username}</h2>
-      <button className="btn" onClick={resetUser}>
+      <Button variant="contained" color="primary" onClick={resetUser}>
         Reset Name
-      </button>
+      </Button>
     </div>
   ) : (
     <form

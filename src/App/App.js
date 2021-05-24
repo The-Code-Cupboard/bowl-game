@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Words from "./components/Words";
-import AddWord from "./components/AddWord";
-import Footer from "./components/Footer";
-import About from "./components/About";
-import UserNameBox from "./components/UserNameBox";
+import { nanoid } from "nanoid";
+
+import Header from "../common/Header";
+import Words from "../common/Words";
+import AddWord from "../common/AddWord";
+import Footer from "../common/Footer";
+import About from "../views/About/About";
+import UserNameBox from "../common/UserNameBox";
 import {
   fetchWords,
   postWord,
@@ -18,8 +20,7 @@ import {
   getCookie,
   eraseCookie,
   fetchUsername,
-} from "./services";
-import { nanoid } from "nanoid";
+} from "../services/http_services";
 
 const App = () => {
   const [showAddWord, setShowAddWord] = useState(false);
