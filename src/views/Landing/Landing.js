@@ -1,6 +1,8 @@
+import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import UserNameBox from "../../common/UserNameBox";
 import { postUser } from "../../services/http_services";
+import CreateGameModal from "./CreateGameModal";
 
 const Landing = ({ userId }) => {
   const addUser = async (myUsername) => {
@@ -9,9 +11,12 @@ const Landing = ({ userId }) => {
 
   return (
     <div className="landing">
-      <h4>Landing Page</h4>
+      <h2>Landing Page</h2>
       <UserNameBox onAdd={addUser} />
-      <Link to="/lobby">Next</Link>
+      <Button variant="contained" color="secondary">
+        <Link to="/lobby">Join Game</Link>
+      </Button>
+      <CreateGameModal></CreateGameModal>
     </div>
   );
 };
