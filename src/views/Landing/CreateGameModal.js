@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { TextField, Button } from "@material-ui/core/";
+import { TextField, Button, TableRow } from "@material-ui/core/";
 
 function getModalStyle() {
   return {
@@ -15,17 +15,25 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: 600,
+    width: 400,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
   root: {
+    display: "flex",
+    flexDirection: "column",
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(0.5),
       width: "25ch",
     },
+  },
+  flexJSB: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: theme.spacing(0.5),
   },
 }));
 
@@ -48,14 +56,27 @@ export default function CreateGameModal() {
       <h2 id="simple-modal-title">New Game Settings</h2>
       <p id="simple-modal-description">Test Modal Text</p>
       <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="standard-basic" label="Standard" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+        <h3>Choose Team Names:</h3>
+        <TextField label="Team A" variant="outlined" />
+        <TextField label="Team B" variant="outlined" />
+        <TextField label="Turn Length (seconds)" variant="outlined" />
+        <TextField
+          label="# of Words Per User"
+          variant="outlined"
+          type="number"
+        />
       </form>
-      <Button onClick={handleClose}>Cancel</Button>
-      <Button>
-        <Link to="/lobby">Continue To Lobby</Link>
-      </Button>
+      <div className={classes.flexJSB}>
+        <Button variant="outlined" color="primary" onClick={handleClose}>
+          Cancel
+        </Button>
+
+        <Link to="/lobby">
+          <Button variant="outlined" color="primary">
+            Continue To Lobby
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 
