@@ -16,7 +16,7 @@ const Landing = ({ userId }) => {
       <Button variant="contained" color="secondary">
         <Link to="/lobby">Join Game</Link>
       </Button>
-      <CreateGameModal></CreateGameModal>
+      <CreateGameModal />
     </div>
   );
 };
