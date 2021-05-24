@@ -26,13 +26,19 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     "& > *": {
       margin: theme.spacing(0.5),
-      width: "25ch",
+      width: "100%",
     },
   },
   flexJSB: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    margin: theme.spacing(0.5),
+  },
+  flexJCC: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
     margin: theme.spacing(0.5),
   },
 }));
@@ -57,11 +63,20 @@ export default function CreateGameModal() {
       <p id="simple-modal-description">Test Modal Text</p>
       <form className={classes.root} noValidate autoComplete="off">
         <h3>Choose Team Names:</h3>
-        <TextField label="Team A" variant="outlined" />
-        <TextField label="Team B" variant="outlined" />
-        <TextField label="Turn Length (seconds)" variant="outlined" />
+        <div className={classes.flexJSB}>
+          <TextField label="Team A Name" variant="outlined" />
+          <TextField label="Team B Name" variant="outlined" />
+        </div>
+        <h3>Other Settings:</h3>
+        <TextField
+          label="Turn Length (seconds)"
+          defaultValue="60"
+          variant="outlined"
+          type="number"
+        />
         <TextField
           label="# of Words Per User"
+          defaultValue="10"
           variant="outlined"
           type="number"
         />
