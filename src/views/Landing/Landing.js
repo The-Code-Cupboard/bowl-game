@@ -13,10 +13,14 @@ const Landing = ({ userId }) => {
     <div className="landing">
       <h2>Landing Page</h2>
       <UserNameBox onAdd={addUser} />
-      <Button variant="contained" color="secondary">
-        <Link to="/lobby">Join Game</Link>
-      </Button>
-      <CreateGameModal />
+      <div className="buttons centered">
+        <Link to="/lobby">
+          <Button variant="contained" color="secondary">
+            Join Game
+          </Button>
+        </Link>
+        <CreateGameModal />
+      </div>
     </div>
   );
 };

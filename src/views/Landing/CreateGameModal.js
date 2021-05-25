@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { TextField, Button, TableRow } from "@material-ui/core/";
+import { TextField, Button } from "@material-ui/core/";
 
 function getModalStyle() {
   return {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
-  flexJSB: {
+  flexJCSB: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -63,7 +63,7 @@ export default function CreateGameModal() {
       <p id="simple-modal-description">Test Modal Text</p>
       <form className={classes.root} noValidate autoComplete="off">
         <h3>Choose Team Names:</h3>
-        <div className={classes.flexJSB}>
+        <div className={classes.flexJCSB}>
           <TextField label="Team A Name" variant="outlined" />
           <TextField label="Team B Name" variant="outlined" />
         </div>
@@ -81,7 +81,7 @@ export default function CreateGameModal() {
           type="number"
         />
       </form>
-      <div className={classes.flexJSB}>
+      <div className={classes.flexJCSB}>
         <Button variant="outlined" color="primary" onClick={handleClose}>
           Cancel
         </Button>
@@ -97,12 +97,18 @@ export default function CreateGameModal() {
 
   return (
     <div>
-      <Button variant="contained" color="secondary" onClick={handleOpen}>
+      <Button
+        className={classes.root}
+        variant="contained"
+        color="secondary"
+        onClick={handleOpen}
+      >
         Create Game
       </Button>
       <Modal
         open={open}
         onClose={handleClose}
+        disableBackdropClick
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >

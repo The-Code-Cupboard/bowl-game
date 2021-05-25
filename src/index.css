@@ -35,6 +35,13 @@ body {
   align-items: center;
 }
 
+.buttons-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn {
   display: inline-block;
   background: #3cb2ed;
