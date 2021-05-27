@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import UserNameBox from "./components/UserNameBox";
 import { postUser } from "../../services/http_services";
 import CreateGameModal from "./components/CreateGameModal";
-import { fetchUsername } from "../../services/http_services";
 
 const Landing = ({ userId }) => {
   const addUser = async (myUsername) => {
