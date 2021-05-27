@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-const UserNameBox = ({ onAdd, usernameFromServer }) => {
+const UserNameBox = ({ onAdd }) => {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [showUsernameField, setShowUsernameField] = useState(true);
@@ -54,7 +54,6 @@ const UserNameBox = ({ onAdd, usernameFromServer }) => {
         label="User Name"
         variant="outlined"
         size="small"
-        defaultValue={usernameFromServer}
         onChange={(e) => {
           setUsername(e.target.value);
         }}
