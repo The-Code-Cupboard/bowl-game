@@ -97,12 +97,7 @@ export default function CreateGameModal() {
 
   return (
     <div>
-      <Button
-        className={classes.root}
-        variant="contained"
-        color="secondary"
-        onClick={handleOpen}
-      >
+      <Button variant="contained" color="secondary" onClick={handleOpen}>
         Create Game
       </Button>
       <Modal

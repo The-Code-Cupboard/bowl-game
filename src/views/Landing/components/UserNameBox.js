@@ -9,13 +9,14 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     "& > *": {
-      // margin: "5px",
-      // width: "25ch",
+      margin: "5px",
+      padding: "0",
+      width: "20ch",
     },
   },
 });
 
-const UserNameBox = ({ onAdd }) => {
+const UserNameBox = ({ onAdd, usernameFromServer }) => {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [showUsernameField, setShowUsernameField] = useState(true);
@@ -53,6 +54,7 @@ const UserNameBox = ({ onAdd }) => {
         label="User Name"
         variant="outlined"
         size="small"
+        defaultValue={usernameFromServer}
         onChange={(e) => {
           setUsername(e.target.value);
         }}

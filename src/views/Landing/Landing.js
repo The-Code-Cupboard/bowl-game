@@ -1,8 +1,9 @@
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import UserNameBox from "../../common/UserNameBox";
+import UserNameBox from "./components/UserNameBox";
 import { postUser } from "../../services/http_services";
-import CreateGameModal from "./CreateGameModal";
+import CreateGameModal from "./components/CreateGameModal";
+import { fetchUsername } from "../../services/http_services";
 
 const Landing = ({ userId }) => {
   const addUser = async (myUsername) => {
@@ -11,7 +12,8 @@ const Landing = ({ userId }) => {
 
   return (
     <div className="landing">
-      <h2>Landing Page</h2>
+      <h2>A Guessing Word Game</h2>
+      <p>To start, enter a username below, and join or create a new game.</p>
       <UserNameBox onAdd={addUser} />
       <div className="buttons centered">
         <Link to="/lobby">
