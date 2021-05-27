@@ -16,7 +16,7 @@ const App = () => {
   // replace with a function that checks cookies and sets accordingly
   const userId = setUserId();
   console.log(userId);
-  const [_, setUsers] = useState([
+  const [users, setUsers] = useState([
     {
       id: "default-user-id",
       username: "default-username",
