@@ -4,14 +4,17 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
+    display: "flex",
+    justifyContent: "space-between",
     "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
+      margin: "5px",
+      padding: "0",
+      width: "20ch",
     },
   },
-}));
+});
 
 const UserNameBox = ({ onAdd }) => {
   const classes = useStyles();
@@ -36,27 +39,28 @@ const UserNameBox = ({ onAdd }) => {
   return !showUsernameField ? (
     <div className="usernameBox">
       <h2>Welcome, {username}</h2>
-      <Button variant="contained" color="primary" onClick={resetUser}>
+      <Button
+        label="Reset Name"
+        variant="contained"
+        color="primary"
+        onClick={resetUser}
+      >
         Reset Name
       </Button>
     </div>
   ) : (
-    <form
-      className={classes.root}
-      noValidate
-      autoComplete="off"
-      onSubmit={onSubmit}
-    >
+    <form className={classes.root} noValidate autoComplete="off">
       <TextField
-        id="username-input"
         label="User Name"
         variant="outlined"
-        //value={text}
+        size="small"
         onChange={(e) => {
           setUsername(e.target.value);
         }}
       />
-      <input type="submit" value="Create User" className="btn" />
+      <Button variant="contained" color="primary" onClick={onSubmit}>
+        Create User
+      </Button>
     </form>
   );
 };

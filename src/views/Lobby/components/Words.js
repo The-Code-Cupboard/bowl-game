@@ -1,4 +1,4 @@
-import Word from "./Word";
+import Word from "../../../common/Word";
 
 const Words = ({ words, onDelete }) => {
   console.log("words: ", words);

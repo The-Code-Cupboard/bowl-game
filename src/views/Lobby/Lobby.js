@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import AddWord from "../../common/AddWord";
-import Words from "../../common/Words";
+import AddWord from "./components/AddWord";
+import Words from "./components/Words";
 
 import { deleteWord } from "../../services/http_services";
 
