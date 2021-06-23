@@ -1,7 +1,6 @@
 import Word from "../../../common/Word";
 
 const Words = ({ words, onDelete }) => {
-  console.log("words: ", words);
   return (
     <>
       {words.map((word) => (

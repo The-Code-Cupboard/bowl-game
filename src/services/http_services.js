@@ -2,16 +2,20 @@
 //const HOST = "http://localhost:5000/";
 
 // Heroku
-// const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
+const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
 
 // Local Node JS Server
-const HOST = "http://localhost:5000/api/";
+// const HOST = "http://localhost:5000/api/";
 
-export const getDataFromServer = async (setWords, setUsers) => {
-  const _words = await fetchWords();
-  const _users = await fetchUsers();
-  setWords(_words);
-  setUsers(_users);
+export const getDataFromServer = async (setWords = null, setUsers = null) => {
+  if (setWords) {
+    const _words = await fetchWords();
+    setWords(_words);
+  }
+  if (setUsers) {
+    const _users = await fetchUsers();
+    setUsers(_users);
+  }
 };
 
 // Fetch Words

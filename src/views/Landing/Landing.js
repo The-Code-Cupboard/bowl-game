@@ -14,12 +14,15 @@ const Landing = ({ userId }) => {
       <h2>A Guessing Word Game</h2>
       <p>To start, enter a username below, and join or create a new game.</p>
       <UserNameBox onAdd={addUser} />
+      <br></br>
       <div className="buttons centered">
         <Link to="/lobby">
           <Button variant="contained" color="secondary">
             Join Game
           </Button>
         </Link>
+        <br></br>
+        <br></br>
         <CreateGameModal />
       </div>
     </div>
