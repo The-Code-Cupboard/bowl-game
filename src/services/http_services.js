@@ -2,10 +2,10 @@
 //const HOST = "http://localhost:5000/";
 
 // Heroku
-const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
+// const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
 
 // Local Node JS Server
-// const HOST = "http://localhost:5000/api/";
+const HOST = "http://localhost:5000/api/";
 
 export const getDataFromServer = async (setWords = null, setUsers = null) => {
   if (setWords) {

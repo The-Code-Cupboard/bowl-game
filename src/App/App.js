@@ -15,7 +15,6 @@ import { setUserId } from "../services/helper_functions";
 const App = () => {
   // replace with a function that checks cookies and sets accordingly
   const userId = setUserId();
-  console.log(userId);
   const [users, setUsers] = useState([]);
   const [words, setWords] = useState([]);
 
@@ -28,13 +27,7 @@ const App = () => {
       <div className="container">
         <Header />
         <Route exact path="/" render={() => <Landing userId={userId} />} />
-        <Route
-          exact
-          path="/lobby"
-          render={() => (
-            <Lobby words={words} setWords={setWords} userId={userId} />
-          )}
-        />
+        <Route exact path="/lobby" render={() => <Lobby words={words} setWords={setWords} userId={userId} />} />
         <Route exact path="/game" component={Game} />
         <Route exact path="/summary" component={Summary} />
         <Route exact path="/about" component={About} />

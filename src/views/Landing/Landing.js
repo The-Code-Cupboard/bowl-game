@@ -6,6 +6,7 @@ import CreateGameModal from "./components/CreateGameModal";
 
 const Landing = ({ userId }) => {
   const addUser = async (myUsername) => {
+    console.log(myUsername, userId);
     await postUser(myUsername, userId);
   };
 

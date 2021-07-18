@@ -2,19 +2,16 @@ import { Link } from "react-router-dom";
 import AddWord from "./components/AddWord";
 import Words from "./components/Words";
 
-import {
-  deleteWord,
-  postWord,
-  getDataFromServer,
-} from "../../services/http_services";
-
-const removeWord = async (id) => {
-  await deleteWord(id);
-};
+import { deleteWord, postWord, getDataFromServer } from "../../services/http_services";
 
 const Lobby = ({ words, setWords, userId }) => {
   const addWord = async (myWord) => {
     await postWord(myWord, userId);
+    getDataFromServer(setWords);
+  };
+
+  const removeWord = async (id) => {
+    await deleteWord(id);
     getDataFromServer(setWords);
   };
 

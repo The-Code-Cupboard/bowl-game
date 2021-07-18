@@ -10,32 +10,27 @@ const About = () => {
         </li>
         <li>
           <p>
-            Submit serveral words - a word can be a person, place or thing that
-            others in the game are likely to recognize
+            Submit serveral words - a word can be a person, place or thing that others in the game are likely to
+            recognize
           </p>
         </li>
         <li>
           <p>Round 1:</p>
           <ul>
             <li>
-              <p>
-                A word will be given to the person in the hotseat for 60 seconds
-              </p>
+              <p>A word will be given to the person in the hotseat for 60 seconds</p>
             </li>
             <li>
               <p>
-                The person in the hotseat will describe the word to their
-                teammates using any vocabulary except the given word
+                The person in the hotseat will describe the word to their teammates using any vocabulary except the
+                given word
               </p>
             </li>
             <li>
               <p>If the teammates guess the word, a point is awarded</p>
             </li>
             <li>
-              <p>
-                Round 1 is repeated by alternating teams until the list of words
-                is exhausted
-              </p>
+              <p>Round 1 is repeated by alternating teams until the list of words is exhausted</p>
             </li>
           </ul>
         </li>
