@@ -1,10 +1,10 @@
-import Word from "./Word";
+import Word from "../../../common/Word";
 
 const Words = ({ words, onDelete }) => {
   return (
     <>
       {words.map((word) => (
-        <Word key={word.id} word={word} onDelete={onDelete} />
+        <Word word={word} onDelete={onDelete} />
       ))}
     </>
   );

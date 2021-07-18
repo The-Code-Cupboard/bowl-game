@@ -2,10 +2,21 @@
 //const HOST = "http://localhost:5000/";
 
 // Heroku
-const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
+// const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
 
 // Local Node JS Server
-// const HOST = "http://localhost:5000/api/";
+const HOST = "http://localhost:5000/api/";
+
+export const getDataFromServer = async (setWords = null, setUsers = null) => {
+  if (setWords) {
+    const _words = await fetchWords();
+    setWords(_words);
+  }
+  if (setUsers) {
+    const _users = await fetchUsers();
+    setUsers(_users);
+  }
+};
 
 // Fetch Words
 export const fetchWords = async () => {
@@ -62,31 +73,4 @@ export const fetchUsername = async (userId) => {
   const res = await fetch(`${HOST}users/${userId}`);
   const userData = await res.json();
   return userData;
-};
-
-// Cookie Operators rewritten from:
-// https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
-export const setCookie = (name, value, days) => {
-  let expires = "";
-  if (days) {
-    let date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    expires = "; expires=" + date.toUTCString();
-  }
-  document.cookie = name + "=" + (value || "") + expires + "; path=/";
-};
-
-export const getCookie = (name) => {
-  let nameEQ = name + "=";
-  let ca = document.cookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === " ") c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
-};
-
-export const eraseCookie = (name) => {
-  document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 };

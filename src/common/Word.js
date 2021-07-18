@@ -1,5 +1,5 @@
 import { FaTimes } from "react-icons/fa";
-import { fetchUsername } from "../services";
+import { fetchUsername } from "../services/http_services";
 import { useState } from "react";
 
 const Word = ({ word, onDelete }) => {

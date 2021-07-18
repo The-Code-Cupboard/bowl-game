@@ -12,7 +12,9 @@ body {
 
 .container {
   max-width: 500px;
-  margin: 30px auto;
+  width: 95%;
+  margin: 20px auto;
+  /* height: calc(100vh - 40px); */
   overflow: auto;
   min-height: 300px;
   border: 1px solid #3c5aed;
@@ -30,6 +32,13 @@ body {
 .usernameBox {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.buttons-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
