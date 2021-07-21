@@ -3,14 +3,22 @@ import AddWord from "./components/AddWord";
 import Words from "./components/Words";
 
 import { deleteWord, postWord, getDataFromServer } from "../../services/http_services";
+import { SetStateAction } from "react";
+import { word } from "../../common/types";
 
-const Lobby = ({ words, setWords, userId }) => {
-  const addWord = async (myWord) => {
+type lobbyProps = {
+  words: Array<word>,
+  setWords: React.Dispatch<SetStateAction<never[]>>,
+  userId: string;
+}
+
+const Lobby = ({ words, setWords, userId }: lobbyProps) => {
+  const addWord = async (myWord: string) => {
     await postWord(myWord, userId);
     getDataFromServer(setWords);
   };
 
-  const removeWord = async (id) => {
+  const removeWord = async (id: string) => {
     await deleteWord(id);
     getDataFromServer(setWords);
   };

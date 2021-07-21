@@ -4,8 +4,12 @@ import UserNameBox from "./components/UserNameBox";
 import { postUser } from "../../services/http_services";
 import CreateGameModal from "./components/CreateGameModal";
 
-const Landing = ({ userId }) => {
-  const addUser = async (myUsername) => {
+type landingProps = {
+  userId: string
+}
+
+const Landing = ({ userId }: landingProps) => {
+  const addUser = async (myUsername: string) => {
     console.log(myUsername, userId);
     await postUser(myUsername, userId);
   };

@@ -1,13 +1,18 @@
 // JSON mock server
 //const HOST = "http://localhost:5000/";
 
+import React, { SetStateAction } from "react";
+
 // Heroku
 // const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
 
 // Local Node JS Server
 const HOST = "http://localhost:5000/api/";
 
-export const getDataFromServer = async (setWords = null, setUsers = null) => {
+export const getDataFromServer = async (
+  setWords: React.Dispatch<SetStateAction<never[]>>,
+  setUsers?: React.Dispatch<SetStateAction<never[]>>
+) => {
   if (setWords) {
     const _words = await fetchWords();
     setWords(_words);
@@ -26,7 +31,7 @@ export const fetchWords = async () => {
 };
 
 // Add Word
-export const postWord = async (word, userId) => {
+export const postWord = async (word: string, userId: string) => {
   await fetch(HOST + "words", {
     method: "POST",
     headers: {
@@ -37,7 +42,7 @@ export const postWord = async (word, userId) => {
 };
 
 // Delete Word
-export const deleteWord = async (id) => {
+export const deleteWord = async (id: string) => {
   await fetch(`${HOST}words/${id}`, {
     method: "DELETE",
   });
@@ -51,7 +56,7 @@ export const fetchUsers = async () => {
 };
 
 // Add or Update User (logic is in the backend)
-export const postUser = async (user, userId) => {
+export const postUser = async (user: string, userId: string) => {
   await fetch(HOST + "users", {
     method: "POST",
     headers: {
@@ -62,14 +67,14 @@ export const postUser = async (user, userId) => {
 };
 
 // Delete User
-export const deleteUser = async (userId) => {
+export const deleteUser = async (userId: string) => {
   await fetch(`${HOST}users/${userId}`, {
     method: "DELETE",
   });
 };
 
 // Fetch Username by ID
-export const fetchUsername = async (userId) => {
+export const fetchUsername = async (userId: string) => {
   const res = await fetch(`${HOST}users/${userId}`);
   const userData = await res.json();
   return userData;

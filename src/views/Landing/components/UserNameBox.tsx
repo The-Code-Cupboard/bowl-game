@@ -16,12 +16,16 @@ const useStyles = makeStyles({
   },
 });
 
-const UserNameBox = ({ onAdd }) => {
+type userNameBoxProps = {
+  onAdd: (myUsername: string) => Promise<void>
+}
+
+const UserNameBox = ({ onAdd }: userNameBoxProps) => {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [showUsernameField, setShowUsernameField] = useState(true);
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
     if (!username) {
       alert("Please enter a username");
@@ -40,7 +44,7 @@ const UserNameBox = ({ onAdd }) => {
     <div className="usernameBox">
       <h2>Welcome, {username}</h2>
       <Button
-        label="Reset Name"
+        // label="Reset Name"
         variant="contained"
         color="primary"
         onClick={resetUser}
@@ -58,7 +62,11 @@ const UserNameBox = ({ onAdd }) => {
           setUsername(e.target.value);
         }}
       />
-      <Button variant="contained" color="primary" onClick={onSubmit}>
+      <Button 
+        variant="contained"
+        color="primary"
+        onClick={onSubmit}
+      >
         Create User
       </Button>
     </form>

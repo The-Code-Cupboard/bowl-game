@@ -1,8 +1,15 @@
 import { FaTimes } from "react-icons/fa";
 import { fetchUsername } from "../services/http_services";
 import { useState } from "react";
+import { word } from "../common/types"
 
-const Word = ({ word, onDelete }) => {
+
+type wordProps = {
+  word: word,
+  onDelete: (wordId: string) => Promise<void>
+}
+
+const Word = ({ word, onDelete }: wordProps) => {
   const [username, setUsername] = useState("default");
   const getUsername = async () => {
     const user = await fetchUsername(word.userId);
