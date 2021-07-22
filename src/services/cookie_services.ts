@@ -1,6 +1,6 @@
 // Cookie Operators rewritten from:
 // https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
-export const setCookie = (name, value, days) => {
+export const setCookie = (name: string, value: string, days: number) => {
   let expires = "";
   if (days) {
     let date = new Date();
@@ -10,7 +10,7 @@ export const setCookie = (name, value, days) => {
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 };
 
-export const getCookie = (name) => {
+export const getCookie = (name: string) => {
   let nameEQ = name + "=";
   let ca = document.cookie.split(";");
   for (let i = 0; i < ca.length; i++) {
@@ -21,6 +21,6 @@ export const getCookie = (name) => {
   return null;
 };
 
-export const eraseCookie = (name) => {
+export const eraseCookie = (name: string) => {
   document.cookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 };

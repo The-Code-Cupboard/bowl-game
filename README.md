@@ -1,10 +1,6 @@
-### npm i
+### yarn or yarn install
 
 installs dependencies
-
-### npm run server
-
-runs json-server as mock backend
 
 ### npm start
 

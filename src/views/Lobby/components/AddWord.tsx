@@ -1,16 +1,21 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const AddWord = ({ onAdd, userId }) => {
+type addWordProps = {
+  onAdd: (myWord: string) => Promise<void>,
+  userId: string
+}
+
+const AddWord = ({ onAdd, userId }: addWordProps) => {
   const [text, setText] = useState("");
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
 
     if (!text) {
       alert("Enter a word in the form, eh!");
       return;
     }
-    onAdd(text, userId);
+    onAdd(text);
 
     setText("");
   };

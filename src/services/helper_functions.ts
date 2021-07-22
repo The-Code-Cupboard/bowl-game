@@ -2,11 +2,12 @@ import { nanoid } from "nanoid";
 import * as cookieServices from "./cookie_services";
 
 export const setUserId = () => {
+  let userId = cookieServices.getCookie("userId");
   //First, check if cookie of "userId" exists in browser
-  if (cookieServices.getCookie("userId") === null) {
+  if (userId === null) {
     // if not, create a cookie
-    cookieServices.setCookie("userId", nanoid(), 1);
+    userId = nanoid();
+    cookieServices.setCookie("userId", userId, 1);
   }
-  //In all cases, userId is now set as a cookie to get
-  return cookieServices.getCookie("userId");
+  return userId;
 };
