@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
 type headerProps = {
-  title: string
-}
+  title: string;
+};
 
 const Header = ({ title }: headerProps) => {
   return (
-    <header className="header">
+    <header className='header'>
       <h1>{title}</h1>
     </header>
   );
