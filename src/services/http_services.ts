@@ -1,6 +1,6 @@
-import React, { SetStateAction } from "react";
+import React, { SetStateAction } from 'react';
 
-const HOST = process.env.REACT_APP_HOST
+const HOST = process.env.REACT_APP_HOST;
 
 export const getDataFromServer = async (
   setWords: React.Dispatch<SetStateAction<never[]>>,
@@ -18,17 +18,17 @@ export const getDataFromServer = async (
 
 // Fetch Words
 export const fetchWords = async () => {
-  const res = await fetch(HOST + "words");
+  const res = await fetch(HOST + 'words');
   const data = await res.json();
   return data;
 };
 
 // Add Word
 export const postWord = async (word: string, userId: string) => {
-  await fetch(HOST + "words", {
-    method: "POST",
+  await fetch(HOST + 'words', {
+    method: 'POST',
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
     body: JSON.stringify({ text: word, userId: userId }),
   });
@@ -37,23 +37,23 @@ export const postWord = async (word: string, userId: string) => {
 // Delete Word
 export const deleteWord = async (id: string) => {
   await fetch(`${HOST}words/${id}`, {
-    method: "DELETE",
+    method: 'DELETE',
   });
 };
 
 // Fetch Users
 export const fetchUsers = async () => {
-  const res = await fetch(HOST + "users");
+  const res = await fetch(HOST + 'users');
   const data = await res.json();
   return data;
 };
 
 // Add or Update User (logic is in the backend)
 export const postUser = async (user: string, userId: string) => {
-  await fetch(HOST + "users", {
-    method: "POST",
+  await fetch(HOST + 'users', {
+    method: 'POST',
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
     body: JSON.stringify({ username: user, id: userId }),
   });
@@ -62,7 +62,7 @@ export const postUser = async (user: string, userId: string) => {
 // Delete User
 export const deleteUser = async (userId: string) => {
   await fetch(`${HOST}users/${userId}`, {
-    method: "DELETE",
+    method: 'DELETE',
   });
 };
 

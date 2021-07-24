@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
-import AddWord from "./components/AddWord";
-import Words from "./components/Words";
+import { Link } from 'react-router-dom';
+import AddWord from './components/AddWord';
+import Words from './components/Words';
 
-import { deleteWord, postWord, getDataFromServer } from "../../services/http_services";
-import { SetStateAction } from "react";
-import { word } from "../../common/types";
+import { deleteWord, postWord, getDataFromServer } from '../../services/http_services';
+import { SetStateAction } from 'react';
+import { word } from '../../common/types';
 
 type lobbyProps = {
-  words: Array<word>,
-  setWords: React.Dispatch<SetStateAction<never[]>>,
+  words: Array<word>;
+  setWords: React.Dispatch<SetStateAction<never[]>>;
   userId: string;
-}
+};
 
 const Lobby = ({ words, setWords, userId }: lobbyProps) => {
   const addWord = async (myWord: string) => {

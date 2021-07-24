@@ -1,12 +1,12 @@
-import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import UserNameBox from "./components/UserNameBox";
-import { postUser } from "../../services/http_services";
-import CreateGameModal from "./components/CreateGameModal";
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import UserNameBox from './components/UserNameBox';
+import { postUser } from '../../services/http_services';
+import CreateGameModal from './components/CreateGameModal';
 
 type landingProps = {
-  userId: string
-}
+  userId: string;
+};
 
 const Landing = ({ userId }: landingProps) => {
   const addUser = async (myUsername: string) => {

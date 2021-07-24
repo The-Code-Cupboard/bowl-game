@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import { TextField, Button } from "@material-ui/core/";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import { TextField, Button } from '@material-ui/core/';
 
 function getModalStyle() {
   return {
@@ -14,31 +14,31 @@ function getModalStyle() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: "absolute",
+    position: 'absolute',
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
   root: {
-    display: "flex",
-    flexDirection: "column",
-    "& > *": {
+    display: 'flex',
+    flexDirection: 'column',
+    '& > *': {
       margin: theme.spacing(0.5),
-      width: "100%",
+      width: '100%',
     },
   },
   flexJCSB: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     margin: theme.spacing(0.5),
   },
   flexJCC: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
     margin: theme.spacing(0.5),
   },
 }));
@@ -68,18 +68,8 @@ export default function CreateGameModal() {
           <TextField label="Team B Name" variant="outlined" />
         </div>
         <h3>Other Settings:</h3>
-        <TextField
-          label="Turn Length (seconds)"
-          defaultValue="60"
-          variant="outlined"
-          type="number"
-        />
-        <TextField
-          label="# of Words Per User"
-          defaultValue="10"
-          variant="outlined"
-          type="number"
-        />
+        <TextField label="Turn Length (seconds)" defaultValue="60" variant="outlined" type="number" />
+        <TextField label="# of Words Per User" defaultValue="10" variant="outlined" type="number" />
       </form>
       <div className={classes.flexJCSB}>
         <Button variant="outlined" color="primary" onClick={handleClose}>

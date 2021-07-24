@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 type headerProps = {
-  title: string
-}
+  title: string;
+};
 
 const Header = ({ title }: headerProps) => {
   return (
@@ -13,7 +13,7 @@ const Header = ({ title }: headerProps) => {
 };
 
 Header.defaultProps = {
-  title: "Bowl Game",
+  title: 'Bowl Game',
 };
 
 Header.propTypes = {
