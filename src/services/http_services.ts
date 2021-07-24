@@ -32,7 +32,6 @@ export const postWord = async (word: string, userId: string) => {
     },
     body: JSON.stringify({ text: word, userId: userId }),
   });
-  console.log(HOST);
 };
 
 // Delete Word
