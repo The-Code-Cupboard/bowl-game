@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import Word from "../../common/Word";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import Word from '../../common/Word';
+import { useState } from 'react';
 
-import { deleteWord, postWord, getDataFromServer } from "../../services/http_services";
-import { SetStateAction } from "react";
-import { word } from "../../common/types";
+import { deleteWord, postWord, getDataFromServer } from '../../services/http_services';
+import { SetStateAction } from 'react';
+import { word } from '../../common/types';
 
 type lobbyProps = {
   words: Array<word>;
@@ -13,17 +13,16 @@ type lobbyProps = {
 };
 
 const Lobby = ({ words, setWords, userId }: lobbyProps) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-
-    if (!text) {
-      alert("Enter a word in the form, eh!");
-      return;
+    if (text) {
+      addWord(text);
+      setText('');
+    } else {
+      alert('Enter a word in the form, eh!');
     }
-    addWord(text);
-    setText("");
   };
 
   const addWord = async (myWord: string) => {
