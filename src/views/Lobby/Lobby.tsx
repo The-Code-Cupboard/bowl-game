@@ -3,7 +3,7 @@ import AddWord from './components/AddWord';
 import Words from './components/Words';
 
 import { deleteWord, postWord, getDataFromServer } from '../../services/http_services';
-import { SetStateAction } from 'react';
+import React, { SetStateAction } from 'react';
 import { word } from '../../common/types';
 
 type lobbyProps = {

@@ -4,6 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { TextField, Button } from '@material-ui/core/';
 
+/**
+ * Returns modal style
+ * @return {object} formatting options for modal
+ */
 function getModalStyle() {
   return {
     top: `50%`,
@@ -43,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * React component to allow users to create a game lobby
+ * @return {void} ** NOT SURE HOW TO RETURN REACT COMPONENTS WITH JSDOC
+ */
 export default function CreateGameModal() {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render

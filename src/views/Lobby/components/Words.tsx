@@ -1,3 +1,4 @@
+import React from 'react';
 import Word from '../../../common/Word';
 import { word } from '../../../common/types';
 
@@ -10,7 +11,7 @@ const Words = ({ words, onDelete }: wordsProps) => {
   return (
     <>
       {words.map((word) => (
-        <Word word={word} onDelete={onDelete} />
+        <Word key={word.id} word={word} onDelete={onDelete} />
       ))}
     </>
   );

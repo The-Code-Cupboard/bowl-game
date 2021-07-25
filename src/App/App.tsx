@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import About from '../views/About/About';
@@ -15,11 +15,12 @@ import { setUserId } from '../services/helper_functions';
 const App = () => {
   // replace with a function that checks cookies and sets accordingly
   const userId = setUserId();
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [words, setWords] = useState([]);
 
   useEffect(() => {
-    getDataFromServer(setWords, setUsers);
+    // getDataFromServer(setWords, setUsers);
+    getDataFromServer(setWords);
   }, []);
 
   return (
