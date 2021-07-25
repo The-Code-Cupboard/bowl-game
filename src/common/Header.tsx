@@ -1,6 +1,8 @@
+import React from 'react';
+
 const Header = () => {
   return (
-    <header className='header'>
+    <header className="header">
       <h1>Bowl Game</h1>
     </header>
   );

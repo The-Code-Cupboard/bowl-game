@@ -16,13 +16,13 @@ const Landing = ({ userId }: landingProps) => {
   };
 
   return (
-    <div className='landing'>
+    <div className="landing">
       <h2>A Guessing Word Game</h2>
       <p>To start, enter a username below, and join or create a new game.</p>
       <UserNameBox onAdd={addUser} />
-      <div className='buttons-centered'>
-        <Link to='/lobby'>
-          <Button variant='contained' color='secondary'>
+      <div className="buttons-centered">
+        <Link to="/lobby">
+          <Button variant="contained" color="secondary">
             Join Game
           </Button>
         </Link>

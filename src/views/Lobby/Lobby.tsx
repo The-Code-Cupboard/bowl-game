@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Word from '../../common/Word';
 import { deleteWord, postWord, getDataFromServer } from '../../services/http_services';
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import { word } from '../../common/types';
 
 type lobbyProps = {
@@ -34,20 +34,26 @@ const Lobby = ({ words, setWords, userId }: lobbyProps) => {
   };
 
   return (
-    <div className='lobby'>
+    <div className="lobby">
       <h4>Lobby Page</h4>
-      <form className='add-form' onSubmit={onSubmit}>
-        <div className='form-control'>
-          <label htmlFor='wordInput'>Word</label>
-          <input id='wordInput' type='text' placeholder='Add Word' value={text} onChange={(e) => setText(e.target.value)} />
+      <form className="add-form" onSubmit={onSubmit}>
+        <div className="form-control">
+          <label htmlFor="wordInput">Word</label>
+          <input
+            id="wordInput"
+            type="text"
+            placeholder="Add Word"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
         </div>
-        <input type='submit' value='Save Word' className='btn btn-block' />
+        <input type="submit" value="Save Word" className="btn btn-block" />
       </form>
       {words.map((word) => {
-        return <Word word={word} onDelete={removeWord} />;
+        return <Word key={word.id} word={word} onDelete={removeWord} />;
       })}
-      <Link to='/'>Prev</Link>
-      <Link to='/game'>Next</Link>
+      <Link to="/">Prev</Link>
+      <Link to="/game">Next</Link>
     </div>
   );
 };
