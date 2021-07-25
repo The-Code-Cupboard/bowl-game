@@ -1,6 +1,6 @@
 import { FaTimes } from 'react-icons/fa';
 import { fetchUsername } from '../services/http_services';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { word } from '../common/types';
 
 type wordProps = {

@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
 import Word from '../../common/Word';
-import React, { useState } from 'react';
-
 import { deleteWord, postWord, getDataFromServer } from '../../services/http_services';
-import { SetStateAction } from 'react';
+import React, { SetStateAction } from 'react';
 import { word } from '../../common/types';
 
 type lobbyProps = {
