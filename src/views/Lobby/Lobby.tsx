@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Word from '../../common/Word';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { deleteWord, postWord, getDataFromServer } from '../../services/http_services';
 import { SetStateAction } from 'react';
