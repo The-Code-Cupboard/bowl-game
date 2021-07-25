@@ -1,13 +1,6 @@
-// JSON mock server
-//const HOST = "http://localhost:5000/";
-
 import React, { SetStateAction } from "react";
 
-// Heroku
-// const HOST = "https://bowl-game-node-js-backend.herokuapp.com/api/";
-
-// Local Node JS Server
-const HOST = "http://localhost:5000/api/";
+const HOST = process.env.REACT_APP_HOST
 
 export const getDataFromServer = async (
   setWords: React.Dispatch<SetStateAction<never[]>>,
