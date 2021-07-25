@@ -1,23 +1,9 @@
-import PropTypes from "prop-types";
-
-type headerProps = {
-  title: string
-}
-
-const Header = ({ title }: headerProps) => {
+const Header = () => {
   return (
-    <header className="header">
-      <h1>{title}</h1>
+    <header className='header'>
+      <h1>Bowl Game</h1>
     </header>
   );
-};
-
-Header.defaultProps = {
-  title: "Bowl Game",
-};
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
 };
 
 export default Header;
