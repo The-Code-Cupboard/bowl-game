@@ -2,12 +2,7 @@ import React from 'react';
 import Word from '../../../common/Word';
 import { word } from '../../../common/types';
 
-type wordsProps = {
-  words: Array<word>;
-  onDelete: (wordId: string) => Promise<void>;
-};
-
-const Words = ({ words, onDelete }: wordsProps) => {
+const Words = ({ words, onDelete }: { words: Array<word>; onDelete: (wordId: string) => Promise<void> }) => {
   return (
     <>
       {words.map((word) => (
