@@ -4,13 +4,15 @@ import { deleteWord, postWord, getDataFromServer } from '../../services/http_ser
 import React, { SetStateAction, useState } from 'react';
 import { word } from '../../common/types';
 
-type lobbyProps = {
+const Lobby = ({
+  words,
+  setWords,
+  userId,
+}: {
   words: Array<word>;
   setWords: React.Dispatch<SetStateAction<never[]>>;
   userId: string;
-};
-
-const Lobby = ({ words, setWords, userId }: lobbyProps) => {
+}) => {
   const [text, setText] = useState('');
 
   const onSubmit = (e: any) => {
