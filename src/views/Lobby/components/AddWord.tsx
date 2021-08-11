@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 
-type addWordProps = {
-  onAdd: (myWord: string) => Promise<void>;
-  userId: string;
-};
-
-const AddWord = ({ onAdd, userId }: addWordProps) => {
+const AddWord = ({ onAdd, userId }: { onAdd: (myWord: string) => Promise<void>; userId: string }) => {
   const [text, setText] = useState('');
 
   const onSubmit = (e: any) => {

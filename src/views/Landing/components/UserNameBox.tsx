@@ -16,11 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-type userNameBoxProps = {
-  onAdd: (myUsername: string) => Promise<void>;
-};
-
-const UserNameBox = ({ onAdd }: userNameBoxProps) => {
+const UserNameBox = ({ onAdd }: { onAdd: (myUsername: string) => Promise<void> }) => {
   const classes = useStyles();
   const [username, setUsername] = useState('');
   const [showUsernameField, setShowUsernameField] = useState(true);

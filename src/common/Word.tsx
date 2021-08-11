@@ -3,12 +3,7 @@ import { fetchUsername } from '../services/http_services';
 import React, { useState } from 'react';
 import { word } from '../common/types';
 
-type wordProps = {
-  word: word;
-  onDelete: (wordId: string) => Promise<void>;
-};
-
-const Word = ({ word, onDelete }: wordProps) => {
+const Word = ({ word, onDelete }: { word: word; onDelete: (wordId: string) => Promise<void> }) => {
   const [username, setUsername] = useState('default');
   const getUsername = async () => {
     const user = await fetchUsername(word.userId);

@@ -4,10 +4,10 @@ import './index.css';
 import App from './App/App';
 import reportWebVitals from './reportWebVitals';
 
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 // Material UI Theme
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#3c5aed',
