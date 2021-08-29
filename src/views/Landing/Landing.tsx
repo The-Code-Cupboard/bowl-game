@@ -2,13 +2,17 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import UserNameBox from './components/UserNameBox';
-import { postUser } from '../../services/http_services';
+// import { postUser } from '../../services/http_services';
 import CreateGameModal from './components/CreateGameModal';
+
+import firebase from '../../services/firebaseConfig';
 
 const Landing = ({ userId }: { userId: string }) => {
   const addUser = async (myUsername: string) => {
     console.log(myUsername, userId);
-    await postUser(myUsername, userId);
+    // await postUser(myUsername, userId);
+    const dbRef = firebase.database().ref();
+    dbRef.push(myUsername);
   };
 
   return (

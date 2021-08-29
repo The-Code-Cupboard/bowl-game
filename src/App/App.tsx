@@ -9,18 +9,41 @@ import Summary from '../views/Summary/Summary';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 
-import { getDataFromServer } from '../services/http_services';
 import { setUserId } from '../services/helper_functions';
+import firebase from '../services/firebaseConfig';
+
+interface userObjectType {
+  key: string;
+  username: string;
+}
 
 const App = () => {
   // replace with a function that checks cookies and sets accordingly
   const userId = setUserId();
-  // const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
   const [words, setWords] = useState([]);
 
   useEffect(() => {
+    // Retrieve users from Firebase and set to users.
+    const dbRef = firebase.database().ref();
+    dbRef.on('value', (snapshot) => {
+      const myData = snapshot.val();
+      // const newArray: Array<userObjectType> = [];
+      const newArray: any = [];
+
+      for (const dataKey in myData) {
+        if (Object.prototype.hasOwnProperty.call(myData, dataKey)) {
+          const userObject: userObjectType = {
+            key: dataKey,
+            username: myData[dataKey].username,
+          };
+          newArray.push(userObject);
+        }
+      }
+      setUsers(newArray);
+    });
     // getDataFromServer(setWords, setUsers);
-    getDataFromServer(setWords);
+    // getDataFromServer(setWords);
   }, []);
 
   return (
@@ -28,7 +51,11 @@ const App = () => {
       <div className="container">
         <Header />
         <Route exact path="/" render={() => <Landing userId={userId} />} />
-        <Route exact path="/lobby" render={() => <Lobby words={words} setWords={setWords} userId={userId} />} />
+        <Route
+          exact
+          path="/lobby"
+          render={() => <Lobby users={users} words={words} setWords={setWords} userId={userId} />}
+        />
         <Route exact path="/game" component={Game} />
         <Route exact path="/summary" component={Summary} />
         <Route exact path="/about" component={About} />

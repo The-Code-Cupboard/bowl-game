@@ -5,10 +5,12 @@ import React, { SetStateAction, useState } from 'react';
 import { word } from '../../common/types';
 
 const Lobby = ({
+  users,
   words,
   setWords,
   userId,
 }: {
+  users: Array<any>;
   words: Array<word>;
   setWords: React.Dispatch<SetStateAction<never[]>>;
   userId: string;

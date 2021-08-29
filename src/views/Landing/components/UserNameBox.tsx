@@ -20,14 +20,16 @@ const UserNameBox = ({ onAdd }: { onAdd: (myUsername: string) => Promise<void> }
   const classes = useStyles();
   const [username, setUsername] = useState('');
   const [showUsernameField, setShowUsernameField] = useState(true);
+  const [textInput, setTextInput] = useState('');
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    if (!username) {
+    if (!textInput) {
       alert('Please enter a username');
       return;
     }
-    onAdd(username);
+    setUsername(textInput);
+    onAdd(textInput);
     setShowUsernameField(false);
   };
 
@@ -36,32 +38,28 @@ const UserNameBox = ({ onAdd }: { onAdd: (myUsername: string) => Promise<void> }
     setShowUsernameField(true);
   };
 
-  return !showUsernameField ? (
-    <div className="usernameBox">
-      <h2>Welcome, {username}</h2>
-      <Button
-        // label="Reset Name"
-        variant="contained"
-        color="primary"
-        onClick={resetUser}
-      >
-        Reset Name
-      </Button>
-    </div>
-  ) : (
+  return showUsernameField ? (
     <form className={classes.root} noValidate autoComplete="off" onSubmit={onSubmit}>
       <TextField
         label="User Name"
         variant="outlined"
         size="small"
+        value={textInput}
         onChange={(e) => {
-          setUsername(e.target.value);
+          setTextInput(e.target.value);
         }}
       />
       <Button variant="contained" color="primary" type="submit">
         Create User
       </Button>
     </form>
+  ) : (
+    <div className="usernameBox">
+      <h2>Welcome, {username}</h2>
+      <Button variant="contained" color="primary" onClick={resetUser}>
+        Reset Name
+      </Button>
+    </div>
   );
 };
 
